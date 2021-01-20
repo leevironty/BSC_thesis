@@ -1,46 +1,48 @@
-This is BibTeX, Version 0.99d (TeX Live 2020)
+This is BibTeX, Version 0.99d (TeX Live 2019/Debian)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: kandi.aux
 The style file: plainnat.bst
+I found no \citation commands---while reading file kandi.aux
 Database file #1: library.bib
-You've used 15 entries,
+You've used 0 entries,
             2773 wiz_defined-function locations,
-            695 strings with 6958 characters,
-and the built_in function-call counts, 5781 in all, are:
-= -- 521
-> -- 258
-< -- 14
-+ -- 92
-- -- 77
-* -- 395
-:= -- 903
-add.period$ -- 45
-call.type$ -- 15
-change.case$ -- 70
-chr.to.int$ -- 15
-cite$ -- 30
-duplicate$ -- 299
-empty$ -- 519
-format.name$ -- 94
-if$ -- 1215
+            592 strings with 4829 characters,
+and the built_in function-call counts, 33 in all, are:
+= -- 0
+> -- 0
+< -- 0
++ -- 0
+- -- 0
+* -- 2
+:= -- 10
+add.period$ -- 0
+call.type$ -- 0
+change.case$ -- 0
+chr.to.int$ -- 0
+cite$ -- 0
+duplicate$ -- 0
+empty$ -- 1
+format.name$ -- 0
+if$ -- 1
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 11
-newline$ -- 82
-num.names$ -- 62
-pop$ -- 148
+missing$ -- 0
+newline$ -- 8
+num.names$ -- 0
+pop$ -- 0
 preamble$ -- 1
-purify$ -- 55
+purify$ -- 0
 quote$ -- 0
-skip$ -- 231
+skip$ -- 1
 stack$ -- 0
-substring$ -- 172
-swap$ -- 34
-text.length$ -- 3
+substring$ -- 0
+swap$ -- 0
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 160
+type$ -- 0
 warning$ -- 0
-while$ -- 59
+while$ -- 0
 width$ -- 0
-write$ -- 199
+write$ -- 7
+(There was 1 error message)

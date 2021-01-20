@@ -64,7 +64,7 @@
    <dc:format>application/pdf</dc:format> 
    <dc:title><rdf:Alt><rdf:li xml:lang="x-default">Bayesian model validation metrics in retail datasets</rdf:li></rdf:Alt></dc:title>
    <dc:creator><rdf:Seq><rdf:li>Leevi Rönty</rdf:li></rdf:Seq></dc:creator>
-   <dc:rights><rdf:Alt><rdf:li xml:lang="x-default">Copyright © 2020 Leevi Rönty</rdf:li></rdf:Alt></dc:rights>
+   <dc:rights><rdf:Alt><rdf:li xml:lang="x-default">Copyright © 2021 Leevi Rönty</rdf:li></rdf:Alt></dc:rights>
    <dc:description><rdf:Alt><rdf:li xml:lang="x-default"> Tiivistelmässä on lyhyt selvitys kirjoituksen tärkeimmästä sisällöstä: mitä ja miten on tutkittu, sekä mitä tuloksia on saatu. Tämän opinnäytteen tiivistelmäteksti kirjoitetaan opinnäytteen luettavan osan lomakkeen lisäksi myös pdf-tiedoston metadataan. Kirjoita tähän metadataan kirjoitettavaa teksti. Metadatatekstissa ei saa olla erikoismerkkejä, rivinvaiho- tai kappaleenjakomerkkiä, joten näitä merkkeja ei saa käyttää tässä. Jos tiivistelmäsi ei sisällä erikoimerkkejä eikä kaipaa kappaleenjakoa, voit hyödynttää makroa abstracttext luodessasi lomakkeen tiivistelmää (katso kommentti alla). Metadatatiivistelmatekstin on muuten oltava sama kuin lomakkeessa oleva teksti. </rdf:li></rdf:Alt></dc:description>
    <dc:subject><rdf:Bag><rdf:li>Bayesian models</rdf:li>
      <rdf:li>model validation</rdf:li>
@@ -81,17 +81,17 @@
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:xmp="http://ns.adobe.com/xap/1.0/"> 
    <xmp:CreatorTool>LaTeX with hyperref</xmp:CreatorTool> 
-   <xmp:ModifyDate>2020-10-05T10:19:46+03:00</xmp:ModifyDate> 
-   <xmp:CreateDate>2020-10-05T10:19:46+03:00</xmp:CreateDate> 
-   <xmp:MetadataDate>2020-10-05T10:19:46+03:00</xmp:MetadataDate> 
+   <xmp:ModifyDate>2021-01-20T14:23:51+02:00</xmp:ModifyDate> 
+   <xmp:CreateDate>2021-01-20T14:23:51+02:00</xmp:CreateDate> 
+   <xmp:MetadataDate>2021-01-20T14:23:51+02:00</xmp:MetadataDate> 
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:xmpRights = "http://ns.adobe.com/xap/1.0/rights/"> 
    <xmpRights:Marked>True</xmpRights:Marked>
-   <xmpRights:UsageTerms><rdf:Alt><rdf:li xml:lang="x-default">Copyright © 2020 Leevi Rönty</rdf:li></rdf:Alt></xmpRights:UsageTerms>
+   <xmpRights:UsageTerms><rdf:Alt><rdf:li xml:lang="x-default">Copyright © 2021 Leevi Rönty</rdf:li></rdf:Alt></xmpRights:UsageTerms>
   </rdf:Description> 
   <rdf:Description rdf:about="" xmlns:xmpMM="http://ns.adobe.com/xap/1.0/mm/"> 
    <xmpMM:DocumentID>uuid:E4A48AB5-7CA3-6712-4FD6-BD3D4CBF3C37</xmpMM:DocumentID> 
-   <xmpMM:InstanceID>uuid:F391D1CF-3657-0D4C-14E9-CBE220C2AF42</xmpMM:InstanceID> 
+   <xmpMM:InstanceID>uuid:FDD0BA98-E5B7-9BDA-748B-042A6E9C5559</xmpMM:InstanceID> 
   </rdf:Description> 
  </rdf:RDF> 
 </x:xmpmeta> 
