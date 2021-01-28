@@ -281,16 +281,23 @@ voi luotettavuuden arviointi olla myös siellä.
 %\csvautotabular{test_data.csv}
 %\catcode`\$=3
 
+\begin{figure}[htb]
+	\centering
+	\includegraphics[height=8cm]{../notebookit/metrics_demo.pdf}
+	\caption{Demo metriikoiden visualisoinnista \ref{metrics_A}}
+	\label{demo}
+\end{figure}
+
 \begin{table*}[!ht]
 	\csvreader[%
 	 tabular={|c|c|c|c|c|c|},
 					table head = \hline\textbf{Model} &\textbf{WAIC}\\\hline,
 					late after line= \\,
 					late after last line=\\\hline %
-					]{test.csv}{model_name=\mname,WAIC=\waic}%
+					]{../tables/aggregated_A_metrics.csv}{model_name=\mname,WAIC=\waic}%
 					{\mname & \waic}
 				 \centering
-					\caption{\label{table1}Number by category}
+					\caption{\label{metrics_A}Metriikoiden tulokset}
 	\end{table*}
 
 %\csvautotabular{../tables/single_store_4_of_A_metrics.csv}
@@ -348,10 +355,10 @@ eivät sovi leipätekstin joukkoon:
 %% komennon sijaan
 %%
 \begin{figure}[htb]
-\centering
-\includegraphics[height=8cm]{./ledspole.jpg}
-\caption{Kuvateksti, jossa on liitteen numerointi}
-\label{liitekuva}
+	\centering
+	\includegraphics[height=8cm]{./ledspole.jpg}
+	\caption{Kuvateksti, jossa on liitteen numerointi}
+	\label{liitekuva}
 \end{figure}
 %%
 Liitteiden taulukoiden numerointi on kuvien ja kaavojen kaltainen:
