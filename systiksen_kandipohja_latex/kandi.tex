@@ -5,6 +5,9 @@
 \usepackage{amsfonts, amssymb, amsbsy, amsmath}
 \usepackage[english, finnish]{babel}
 \usepackage{natbib}
+
+\usepackage{csvsimple}
+
 \newpage
 
 \bibliographystyle{plainnat}
@@ -33,11 +36,13 @@
 %%
 
 
+
 \date{14.10.2020}
 
 \supervisor{Prof.\ Fabricio Oliveira}
 
 \advisor{DSc\ (Tech.) Mikko Ervasti}
+\advisor{DSc\ (Tech.) Paavo Niskala} % TODO: checkaa voiko tähän lisätä kahta näin
 
 \uselogo{aaltoBlue}{''}
 
@@ -87,6 +92,7 @@ research topic, the methods you have used, and the results you obtained.
 \degreeprogram{Teknillinen fysiikka ja matematiikka}
 \major{Matematiikka ja systeemitieteet}
 \advisor{TkT Mikko Ervasti}
+\advisor{TkT Paavo Niskala}
 \keywords{Bayeslaiset mallit\spc mallin validointi\spc
 	informaatiokriteeri\spc Facebook Prophet}
 
@@ -240,8 +246,6 @@ update prior beliefs about parameter distribution.
 
 \subsection{Rakenne}
 
-
-
 \section{Tutkimusaineisto ja -menetelmät}
 
 Tässä osassa kuvataan käytetty tutkimusaineisto ja tutkimuksen metodologiset
@@ -268,6 +272,30 @@ tulee >>Tarkastelu>>. Tutkimustulosten merkitystä voi arvioida myös
 Tässä osassa on syytä myös arvioida tutkimustulosten luotettavuutta.
 Jos tutkimustulosten merkitystä arvioidaan >>Tarkastelu>>-osassa,
 voi luotettavuuden arviointi olla myös siellä. 
+
+
+
+
+
+%\catcode`\$=12
+%\csvautotabular{test_data.csv}
+%\catcode`\$=3
+
+\begin{table*}[!ht]
+	\csvreader[%
+	 tabular={|c|c|c|c|c|c|},
+					table head = \hline\textbf{Model} &\textbf{WAIC}\\\hline,
+					late after line= \\,
+					late after last line=\\\hline %
+					]{test.csv}{model_name=\mname,WAIC=\waic}%
+					{\mname & \waic}
+				 \centering
+					\caption{\label{table1}Number by category}
+	\end{table*}
+
+%\csvautotabular{../tables/single_store_4_of_A_metrics.csv}
+
+
 
 
 %\section{Yhteenveto}
