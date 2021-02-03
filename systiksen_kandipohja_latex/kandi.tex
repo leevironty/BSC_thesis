@@ -8,6 +8,9 @@
 
 \usepackage{csvsimple}
 
+\usepackage{caption}
+\usepackage{subcaption}
+
 \newpage
 
 \bibliographystyle{plainnat}
@@ -275,30 +278,110 @@ voi luotettavuuden arviointi olla myös siellä.
 
 
 
+\begin{figure}[htb]
+	\centering
+	\includegraphics[height=8cm]{../plots/dataset/dataset_plot_y.pdf}
+	\caption{Aggregated weekly sales by store group. Groups A and B demonstrate holiday effects while group C remains relatively stable through each year.
+	}
+	\label{fig:data_y}
+\end{figure}
 
 
-%\catcode`\$=12
-%\csvautotabular{test_data.csv}
-%\catcode`\$=3
+% https://www.overleaf.com/learn/latex/How_to_Write_a_Thesis_in_LaTeX_(Part_3):_Figures,_Subfigures_and_Tables
+\begin{figure}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../plots/dataset/dataset_plot_temperature.pdf}
+		\caption{Temperature by store group}
+		\label{fig:data_temp}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../plots/dataset/dataset_plot_CPI.pdf}
+		\caption{Consumer price index by store group}
+		\label{fig:data_cpi}
+	\end{subfigure}
+
+
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../plots/dataset/dataset_plot_fuel_price.pdf}
+		\caption{Fuel price by store group}
+		\label{fig:data_fuel}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../plots/dataset/dataset_plot_unemployment_interpolated.pdf}
+		\caption{Interpolated unemployment rate by store group}
+		\label{fig:data_unemp}
+	\end{subfigure}
+\end{figure}
+
+
+
+
 
 \begin{figure}[htb]
 	\centering
-	\includegraphics[height=8cm]{../notebookit/metrics_demo.pdf}
-	\caption{Demo metriikoiden visualisoinnista \ref{metrics_A}}
-	\label{demo}
+	\includegraphics[height=8cm]{../plots/metrics/metrics_plot_A.pdf}
+	\caption{Visualisation of model validation metric results applied on store group A. Agganged such that visually lower is better.
+	Each axis is scales so that extreme values are at the ends. Please note the inverted axis of 10-fold cross validation metric. For 
+	precise values please refer to table \ref{tab:metrics_A}.
+	}
+	\label{fig:metrics_A}
+\end{figure}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[height=8cm]{../plots/metrics/metrics_plot_B.pdf}
+	\caption{Caption this}
+	\label{fig:metrics_B}
+\end{figure}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[height=8cm]{../plots/metrics/metrics_plot_C.pdf}
+	\caption{Caption this}
+	\label{fig:metrics_C}
 \end{figure}
 
 \begin{table*}[!ht]
-	\csvreader[%
-	 tabular={|c|c|c|c|c|c|},
-					table head = \hline\textbf{Model} &\textbf{WAIC}\\\hline,
-					late after line= \\,
-					late after last line=\\\hline %
-					]{../tables/aggregated_A_metrics.csv}{model_name=\mname,WAIC=\waic}%
-					{\mname & \waic}
-				 \centering
-					\caption{\label{metrics_A}Metriikoiden tulokset}
-	\end{table*}
+\csvreader[%
+	tabular={|c|c|c|c|c|c|},
+				table head = \hline\textbf{Model} &\textbf{AIC} &\textbf{DIC} &\textbf{WAIC} &\textbf{MAPE}&\textbf{10-fold CV}\\\hline,
+				late after line= \\,
+				late after last line=\\\hline %
+				]{../tables/rounded/aggregated_A_metrics.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
+				{\mname & \aic & \dic & \waic & \MAPE & \cv}
+				\centering
+				\caption{\label{tab:metrics_A}Results of validation metrics applied on store group A}
+\end{table*}
+
+\begin{table*}[!ht]
+\csvreader[%
+	tabular={|c|c|c|c|c|c|},
+				table head = \hline\textbf{Model} &\textbf{AIC} &\textbf{DIC} &\textbf{WAIC} &\textbf{MAPE}&\textbf{10-fold CV}\\\hline,
+				late after line= \\,
+				late after last line=\\\hline %
+				]{../tables/rounded/aggregated_B_metrics.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
+				{\mname & \aic & \dic & \waic & \MAPE & \cv}
+				\centering
+				\caption{\label{tab:metrics_B}Results of validation metrics applied on store group B}
+\end{table*}
+
+\begin{table*}[!ht]
+\csvreader[%
+	tabular={|c|c|c|c|c|c|},
+				table head = \hline\textbf{Model} &\textbf{AIC} &\textbf{DIC} &\textbf{WAIC} &\textbf{MAPE}&\textbf{10-fold CV}\\\hline,
+				late after line= \\,
+				late after last line=\\\hline %
+				]{../tables/rounded/aggregated_C_metrics.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
+				{\mname & \aic & \dic & \waic & \MAPE & \cv}
+				\centering
+				\caption{\label{tab:metrics_C}Results of validation metrics applied on store group C}
+\end{table*}
 
 %\csvautotabular{../tables/single_store_4_of_A_metrics.csv}
 
