@@ -19,11 +19,11 @@ import metrics_refactored
 import json
 from prophet.python.fbprophet.serialize import model_to_json, model_from_json
 
-features = pd.read_csv('data/Features data set.csv')
+features = pd.read_csv('../data/Features data set.csv')
 features['Date'] = pd.to_datetime(features['Date'], dayfirst=True)
-sales = pd.read_csv('data/sales data-set.csv')
+sales = pd.read_csv('../data/sales data-set.csv')
 sales['Date'] = pd.to_datetime(sales['Date'], dayfirst=True)
-stores = pd.read_csv('data/stores data-set.csv')
+stores = pd.read_csv('../data/stores data-set.csv')
 
 sales_weekly = sales.groupby(['Store', 'Date']).sum().reset_index().merge(stores, on='Store')[['Store', 'Date', 'Weekly_Sales', 'Type', 'Size']]
 

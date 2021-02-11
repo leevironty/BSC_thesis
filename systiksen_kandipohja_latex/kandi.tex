@@ -348,6 +348,7 @@ voi luotettavuuden arviointi olla myös siellä.
 \end{figure}
 
 \begin{table*}[!ht]
+	\caption{\label{tab:metrics_A}Results of validation metrics applied on store group A}
 \csvreader[%
 	tabular={|c|c|c|c|c|c|},
 				table head = \hline\textbf{Model} &\textbf{AIC} &\textbf{DIC} &\textbf{WAIC} &\textbf{MAPE}&\textbf{10-fold CV}\\\hline,
@@ -356,10 +357,11 @@ voi luotettavuuden arviointi olla myös siellä.
 				]{../tables/rounded/aggregated_A_metrics.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
 				{\mname & \aic & \dic & \waic & \MAPE & \cv}
 				\centering
-				\caption{\label{tab:metrics_A}Results of validation metrics applied on store group A}
+				
 \end{table*}
 
 \begin{table*}[!ht]
+	\caption{\label{tab:metrics_B}Results of validation metrics applied on store group B}
 \csvreader[%
 	tabular={|c|c|c|c|c|c|},
 				table head = \hline\textbf{Model} &\textbf{AIC} &\textbf{DIC} &\textbf{WAIC} &\textbf{MAPE}&\textbf{10-fold CV}\\\hline,
@@ -368,11 +370,12 @@ voi luotettavuuden arviointi olla myös siellä.
 				]{../tables/rounded/aggregated_B_metrics.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
 				{\mname & \aic & \dic & \waic & \MAPE & \cv}
 				\centering
-				\caption{\label{tab:metrics_B}Results of validation metrics applied on store group B}
+				
 \end{table*}
 
 \begin{table*}[!ht]
-\csvreader[%
+	\caption{\label{tab:metrics_C}Results of validation metrics applied on store group C}
+	\csvreader[%
 	tabular={|c|c|c|c|c|c|},
 				table head = \hline\textbf{Model} &\textbf{AIC} &\textbf{DIC} &\textbf{WAIC} &\textbf{MAPE}&\textbf{10-fold CV}\\\hline,
 				late after line= \\,
@@ -380,7 +383,6 @@ voi luotettavuuden arviointi olla myös siellä.
 				]{../tables/rounded/aggregated_C_metrics.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
 				{\mname & \aic & \dic & \waic & \MAPE & \cv}
 				\centering
-				\caption{\label{tab:metrics_C}Results of validation metrics applied on store group C}
 \end{table*}
 
 %\csvautotabular{../tables/single_store_4_of_A_metrics.csv}
@@ -437,12 +439,7 @@ eivät sovi leipätekstin joukkoon:
 %% Ympäristöä center voi käyttää \centering-
 %% komennon sijaan
 %%
-\begin{figure}[htb]
-	\centering
-	\includegraphics[height=8cm]{./ledspole.jpg}
-	\caption{Kuvateksti, jossa on liitteen numerointi}
-	\label{liitekuva}
-\end{figure}
+
 %%
 Liitteiden taulukoiden numerointi on kuvien ja kaavojen kaltainen:
 \begin{table}[htb]
