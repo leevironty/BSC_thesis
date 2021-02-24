@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.20)  17 FEB 2021 02:15
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.20)  24 FEB 2021 13:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -916,11 +916,11 @@ Package rerunfilecheck Info: File `kandi.out' has not changed.
 Here is how much of TeX's memory you used:
  29419 strings out of 480893
  511995 string characters out of 5908082
- 1246083 words of memory out of 5000000
+ 1246084 words of memory out of 5000000
  44355 multiletter control sequences out of 15000+600000
  588113 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 76i,9n,68p,861b,2350s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 76i,9n,68p,882b,2350s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb>
 Output written on /Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.pdf (13 pages, 359705 bytes).
 PDF statistics:
