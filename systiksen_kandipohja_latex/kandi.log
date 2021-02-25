@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.20)  24 FEB 2021 13:50
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.20)  25 FEB 2021 15:29
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -675,7 +675,11 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 77.
 File: l3backend-pdfmode.def 2020-08-07 L3 backend support: PDF mode
 \l__kernel_color_stack_int=\count314
 \l__pdf_internal_box=\box58
-) (/Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.aux)
+) (/Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.aux
+
+LaTeX Warning: Label `fig:plot_demo_2' multiply defined.
+
+)
 \openout1 = `kandi.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 77.
@@ -893,6 +897,11 @@ File: ../plots/forecasts/model_fits_aggregated_A.pdf Graphic file (type pdf)
 <use ../plots/forecasts/model_fits_aggregated_A.pdf>
 Package pdftex.def Info: ../plots/forecasts/model_fits_aggregated_A.pdf  used on input line 398.
 (pdftex.def)             Requested size: 344.88506pt x 227.62204pt.
+<../plots/forecasts/cv_metric_demo_plot.pdf, id=108, 722.7pt x 433.62pt>
+File: ../plots/forecasts/cv_metric_demo_plot.pdf Graphic file (type pdf)
+<use ../plots/forecasts/cv_metric_demo_plot.pdf>
+Package pdftex.def Info: ../plots/forecasts/cv_metric_demo_plot.pdf  used on input line 405.
+(pdftex.def)             Requested size: 379.36804pt x 227.62204pt.
 (/Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.bbl
 
 Package natbib Warning: Empty `thebibliography' environment on input line 8.
@@ -900,31 +909,35 @@ Package natbib Warning: Empty `thebibliography' environment on input line 8.
 ) [7 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/dataset/dataset_plot_y.pdf>] [8 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/dataset/dataset_plot_temperature.pdf> </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/dataset/dataset_plot_CPI.pdf> </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/dataset/dataset_plot_fuel_price.pdf> </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/dataset/dataset_plot_unemployment_interpolated.pdf>] [9 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/metrics/metrics_plot_A.pdf> </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/metrics/metrics_plot_B.pdf
 
 pdfTeX warning: pdflatex (file /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/metrics/metrics_plot_B.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] [10 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/metrics/metrics_plot_C.pdf>] [11 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/plot_demo.pdf> </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/model_fits_aggregated_A.pdf>] [12
+>] [10 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/metrics/metrics_plot_C.pdf>] [11 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/plot_demo.pdf> </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/model_fits_aggregated_A.pdf>] [12 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/cv_metric_demo_plot.pdf>] [13
 
-] [13
+] [14
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 480.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 480.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 486.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 486.
  (/Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 480.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 480.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 486.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 486.
 Package rerunfilecheck Info: File `kandi.out' has not changed.
 (rerunfilecheck)             Checksum: A2D0B77C84133076FF0F67EFBA6E6DF0;1447.
+
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 29419 strings out of 480893
- 511995 string characters out of 5908082
- 1246084 words of memory out of 5000000
- 44355 multiletter control sequences out of 15000+600000
+ 29427 strings out of 480893
+ 512295 string characters out of 5908082
+ 1246997 words of memory out of 5000000
+ 44360 multiletter control sequences out of 15000+600000
  588113 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  76i,9n,68p,882b,2350s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb>
-Output written on /Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.pdf (13 pages, 359705 bytes).
+Output written on /Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.pdf (14 pages, 379093 bytes).
 PDF statistics:
- 568 PDF objects out of 1000 (max. 8388607)
- 37 named destinations out of 1000 (max. 500000)
- 18083 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 613 PDF objects out of 1000 (max. 8388607)
+ 39 named destinations out of 1000 (max. 500000)
+ 18088 words of extra memory for PDF output out of 20736 (max. 10000000)
 

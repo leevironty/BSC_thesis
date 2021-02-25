@@ -196,7 +196,7 @@ def prophet_copy(m):
         mcmc_samples=m.mcmc_samples,
         interval_width=m.interval_width,
         uncertainty_samples=m.uncertainty_samples,
-        stan_backend=m.stan_backend.get_type()
+        #stan_backend=m.stan_backend.get_type()   # QUICK AND DIRTY FIX
     )
     #m2.changepoints_t = deepcopy(m.changepoints_t)
     m2.extra_regressors = deepcopy(m.extra_regressors)

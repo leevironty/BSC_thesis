@@ -8,5 +8,5 @@
 \contentsline {section}{\numberline {3}Tutkimusaineisto ja -menetelmät}{7}{section.3}%
 \contentsline {section}{\numberline {4}Tulokset}{7}{section.4}%
 \contentsline {section}{\numberline {5}Summary}{9}{section.5}%
-\contentsline {section}{\numberline {A}Esimerkki liitteestä}{12}{appendix.A}%
-\contentsline {section}{\numberline {B}Toinen esimerkki liitteestä}{13}{appendix.B}%
+\contentsline {section}{\numberline {A}Esimerkki liitteestä}{13}{appendix.A}%
+\contentsline {section}{\numberline {B}Toinen esimerkki liitteestä}{14}{appendix.B}%
