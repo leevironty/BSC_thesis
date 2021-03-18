@@ -5,8 +5,8 @@
 \contentsline {section}{\numberline {1}Introduction}{6}{section.1}%
 \contentsline {section}{\numberline {2}Background}{6}{section.2}%
 \contentsline {subsection}{\numberline {2.1}Rakenne}{7}{subsection.2.1}%
-\contentsline {section}{\numberline {3}Tutkimusaineisto ja -menetelmät}{7}{section.3}%
-\contentsline {section}{\numberline {4}Tulokset}{7}{section.4}%
+\contentsline {section}{\numberline {3}Datasets and methods}{7}{section.3}%
+\contentsline {section}{\numberline {4}Results}{7}{section.4}%
 \contentsline {section}{\numberline {5}Summary}{9}{section.5}%
-\contentsline {section}{\numberline {A}Esimerkki liitteestä}{14}{appendix.A}%
-\contentsline {section}{\numberline {B}Toinen esimerkki liitteestä}{15}{appendix.B}%
+\contentsline {section}{\numberline {A}Esimerkki liitteestä}{13}{appendix.A}%
+\contentsline {section}{\numberline {B}Toinen esimerkki liitteestä}{14}{appendix.B}%

@@ -249,32 +249,21 @@ update prior beliefs about parameter distribution.
 
 \subsection{Rakenne}
 
-\section{Tutkimusaineisto ja -menetelmät}
+\section{Datasets and methods}
 
 %Tässä osassa kuvataan käytetty tutkimusaineisto ja tutkimuksen metodologiset
 %valinnat, sekä kerrotaan tutkimuksen toteutustapa ja käytetyt menetelmät.
 
 
-\section{Tulokset}
+% Dataset
 
-% Tässä osassa esitetään tulokset ja vastataan tutkielman alussa
-% esitettyihin tutkimuskysymyksiin. Tieteellisen kirjoitelman
-% arvo mitataan tässä osassa esitettyjen tulosten perusteella. 
+The original dataset consists of department-level weekly sales data of 45 stores. Each store location is associated with features,
+that may help in sales prediction. The features are temperature, unemployment, price of gas, and consumer price index CPI. Also the store size
+and type of store is known.
 
-%% Huomaa seuraavassa kappaleessa lainausmerkkien ulkopuolella piste, 
-%% koska piste ei lopeta lainattua tekstinpätkää.
-%% Jos lainattu tekstinpätkä loppuu välimerkkiin, tulee välimerkki
-%% lainausmerkkien sisälle: 
-%% "Et tu, Brute?" sanoi Caesar kuollessaan.
-% Tutkimustuloksien merkitystä on aina syytä arvioida ja tarkastella
-% kriittisesti.  Joskus tarkastelu voi olla tässä osassa, mutta se
-% voidaan myös jättää viimeiseen osaan, jolloin viimeisen osan nimeksi
-% tulee >>Tarkastelu>>. Tutkimustulosten merkitystä voi arvioida myös
-% >>Johtopäätökset>>-otsikon alla viimeisessä osassa. 
 
-% Tässä osassa on syytä myös arvioida tutkimustulosten luotettavuutta.
-% Jos tutkimustulosten merkitystä arvioidaan >>Tarkastelu>>-osassa,
-% voi luotettavuuden arviointi olla myös siellä. 
+
+
 
 
 
@@ -319,6 +308,78 @@ update prior beliefs about parameter distribution.
 	\end{subfigure}
 \end{figure}
 
+% \begin{figure}[htb] % Kaikkien mallien in-sample -fitit
+% 	\centering
+% 	\includegraphics[height=8cm]{../plots/forecasts/model_fits_aggregated_A.pdf}
+% 	\caption{A concept of what another kind of prediction plot could look like. This plot shows in-sample predictions from each of the models in one dataset.}
+% 	\label{fig:plot_demo_2}
+% \end{figure}
+
+
+\section{Results}
+
+% – Tuloksia voi havainnollistaa kuvilla ja taulukoilla 
+
+% – Tulosten tulkinta esittelyn yhteydessä: Mitä tulokset tarkoittavat
+% tutkittavan ilmiön kannalta? Ovatko ne järkeviä? Ovatko
+% esimerkiksi tulokset tilastollisesti merkittäviä?
+
+% – Herkkyystarkastelut – miten mallin oletukset / parametrivalinnat
+% vaikuttavat tuloksiin?
+
+% Tulosluvun tulee olla ymmärrettävissä ilman syvällistä
+% perehtymistä menetelmälukuun – vältä yliteknisyyttä.
+
+% Ensin laitetaan plotit ja taulukot omille paikoilleen
+
+
+
+% Tässä osassa esitetään tulokset ja vastataan tutkielman alussa
+% esitettyihin tutkimuskysymyksiin. Tieteellisen kirjoitelman
+% arvo mitataan tässä osassa esitettyjen tulosten perusteella. 
+
+%% Huomaa seuraavassa kappaleessa lainausmerkkien ulkopuolella piste, 
+%% koska piste ei lopeta lainattua tekstinpätkää.
+%% Jos lainattu tekstinpätkä loppuu välimerkkiin, tulee välimerkki
+%% lainausmerkkien sisälle: 
+%% "Et tu, Brute?" sanoi Caesar kuollessaan.
+% Tutkimustuloksien merkitystä on aina syytä arvioida ja tarkastella
+% kriittisesti.  Joskus tarkastelu voi olla tässä osassa, mutta se
+% voidaan myös jättää viimeiseen osaan, jolloin viimeisen osan nimeksi
+% tulee >>Tarkastelu>>. Tutkimustulosten merkitystä voi arvioida myös
+% >>Johtopäätökset>>-otsikon alla viimeisessä osassa. 
+
+% Tässä osassa on syytä myös arvioida tutkimustulosten luotettavuutta.
+% Jos tutkimustulosten merkitystä arvioidaan >>Tarkastelu>>-osassa,
+% voi luotettavuuden arviointi olla myös siellä. 
+
+
+
+
+
+Applying the metrics yielded promising results. The results are presented visually in figures \ref{fig:metrics_A}, 
+\ref{fig:metrics_B} and \ref{fig:metrics_C}. The visual representation highlights the order different metrics rank the models.
+AIC and DIC ranked all the models similarly for all the datasets, but there were differences in the margins between the models.
+WAIC seemed to mostly agree with AIC and DIC, but in datasets B and C the order of models m1 and m4 was reversed. 
+
+Rankign by MAPE has many similarities with the information criterion rankings. However the model m5 performed worse with all 
+datasets, dropping behind m3 in A and C, but also behind m1 and m4 in B. In dataset B MAPE ranked m1 better than m4. This agrees
+with the WAIC ranking, but it is the other way around with AIC and DIC. The other notable difference in MAPE scores is that in datasets
+A and B the model m2 seems to perform much worse than the other models. However this phenomenon is not present in C. 
+
+10-fold cross validation ranks the models m5 and m3 the best in all datasets, just like the information criterions do. However the
+ranking of the rest varies. In dataset C the models m1, m2 and m4 are ranked similarly as by AIC and DIC. In both A and B the model m4
+takes the last place, while m2 and m1 get a score similar to each other. M2 was ranked better than m1 for dataset A and vice versa for B, but
+the margin was rather slim.
+
+% TODO: VOIKO OLLA NIIN, ETTÄ 10-FOLD CV:SSÄ KÄY M4:N KANSSA SITEN, ETTÄ VAAN JOKU NIISTÄ FITEISTÄ MENEE TOSI PAHASTI PIELEEN???
+
+
+% Pohditaan syitä tuloksille
+% mitä tulokset tarkoittavat nyt sitten mallien validoinnin kannalta?
+% - Onko järkevää käyttää *IC-metriikoita? Vai olisko MAPE sittenkin hyvä?
+% - Muistutetaan lukijaa loss-functionin merkityksestä
+% - lisätutkimus: loss-functioniks joku mapen tyyppinen, mut millä sit annetaan sakkoja?
 
 
 
@@ -326,8 +387,8 @@ update prior beliefs about parameter distribution.
 \begin{figure}[htb]
 	\centering
 	\includegraphics[height=8cm]{../plots/metrics/metrics_plot_A.pdf}
-	\caption{Visualisation of model validation metric results applied on store group A. Agganged such that visually lower is better.
-	Each axis is scales so that extreme values are at the ends. Please note the inverted axis of 10-fold cross validation metric. For 
+	\caption{Visualisation of model validation metric results applied on store group A. Arranged such that visually lower is better.
+	Each axis is scaled so that extreme values are at the ends. Please note the inverted axis of 10-fold cross validation metric. For 
 	precise values please refer to table \ref{tab:metrics_A}.
 	}
 	\label{fig:metrics_A}
@@ -385,20 +446,15 @@ update prior beliefs about parameter distribution.
 				\centering
 \end{table*}
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[height=8cm]{../plots/plot_demo.pdf}
-	\caption{Demo of what kind of precidtion plots the Propchet package can produce
-  by default. These may be helpful (?)}
-	\label{fig:plot_demo}
-\end{figure}
+% \begin{figure}[htb] % Perus prophet-plotti, varmaan hyödytön
+% 	\centering
+% 	\includegraphics[height=8cm]{../plots/plot_demo.pdf}
+% 	\caption{Demo of what kind of precidtion plots the Propchet package can produce
+%   by default. These may be helpful (?)}
+% 	\label{fig:plot_demo}
+% \end{figure}
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[height=8cm]{../plots/forecasts/model_fits_aggregated_A.pdf}
-	\caption{A concept of what another kind of prediction plot could look like. This plot shows in-sample predictions from each of the models in one dataset.}
-	\label{fig:plot_demo_2}
-\end{figure}
+
 
 \begin{figure}[htb]
 	\centering
@@ -422,11 +478,10 @@ update prior beliefs about parameter distribution.
 \end{figure}
 
 
+
+
+
 %\csvautotabular{../tables/single_store_4_of_A_metrics.csv}
-
-
-
-
 %\section{Yhteenveto}
 \section{Summary} 
 
@@ -437,12 +492,12 @@ update prior beliefs about parameter distribution.
 
 
 
-%
+
 % LÄHDELUETTELO
 %  BibTeX-tiedoston kokoaminen onnistuu näppärästi esim. 
 %  Firefoxin Zotero-lisäosalla http://www.zotero.org/
 %  joka osaa poimia viitteet suoraan Google Scholarista.
-%
+
 
 
 % Ladataan library.bib
