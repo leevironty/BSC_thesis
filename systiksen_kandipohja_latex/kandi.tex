@@ -255,14 +255,49 @@ update prior beliefs about parameter distribution.
 %valinnat, sekä kerrotaan tutkimuksen toteutustapa ja käytetyt menetelmät.
 
 
-% Dataset
+% Dataset perusjutut
 
-The original dataset consists of department-level weekly sales data of 45 stores. Each store location is associated with features,
-that may help in sales prediction. The features are temperature, unemployment, price of gas, and consumer price index CPI. Also the store size
-and type of store is known.
+The original dataset consists of department-level weekly sales data of 45 stores. The data spans a little over two years, from 
+20.2.2010 to 26.10.2012. Each store location is associated with features that may help with sales prediction. 
+The features are temperature, unemployment, price of gas, and consumer price index CPI. Also the store size
+and type of store is known. The original dataset contains information about markdowns, but this feature is available only from 11.11.2011 onwards.
+This renders the feature useless, as it is hard to compensate for the missing data.
 
+The sales data for store groups A and B demonstrate strong seasonality. Especially during decembers the turnover spikes due to 
+strong holiday effect. For store group C the sales seem a lot more consistent. Temperature is the only feature that clearly behaves seasonally. 
+Originally unemployment was expressed to equal the latest unemployment statistic. This made the feature behave rather dincontinously. To get around
+the discontinuity affecting the results, the unemployment for each week was calculated by interpolating unemployment from last and next changepoint.
+After the transformation, both unemployment and consumer price index (CPI) have a clear trend. 
 
+%Usually trends or seasonalities are an issue if they are present in the explanatory variables. Trend can cause the model to 
+%intepret the feature having a too significant effect on the response variable if the trend in response variable is not caused
+%by the explanatory variable. Same applies to ...
+%However, this thesis focuses on 
+%comparing the results of different validation metrics. The quality of the models is not a priority. 
 
+% Dataset aggregoinnit
+
+The original dataset contains sales data on a departement level. There are a total of 81 departements, but not all are present in every
+store. We are still left with 3331 sales timeseries. Not all timeseries can be modelled of fitted, thus we need to reduce the amount of data to have any
+hope of modelling anything in a reasonable time. The departement-level sales are first aggregated to store-level sales by summing sales in each departement
+in each store. This still leaves us with 45 timeseries, which is still a bit too much. To simplify things a bit more, the stores are further aggregated based on
+store type (A, B or C). The features for these store groups are obtained by calculating a size-weighted average. As the aggregation process of the features can 
+render the features less meaningfull, a small number of stores is also selected for modelling from each store group.
+
+% Mallit
+
+The prophet model is a linear model used to predict time series. The model consists of seasonality components, trend, and possible explanatory variables. The 
+seasonalities are modelled using a fourier approximation with a limited amount of coefficients. Trend is modelled linearly between a number of pre-determined 
+changepoints. After the last change point the model also assumes a linear trend. The prophet model handles time as a feature ranging from 0 to 1. As such, 
+the actual time interval between datapoints does not have to be constant.
+
+Each of the five fitted models is an prophet model with different settings and features. The models were constructed to showcase the behaviour of the metrics
+in situations where the model is used as one could use it in a busiess environment, overfitting seasonality, a case where a data-generating model can be constructed
+from the explanatory variables, and a case similar to the last-mentioned but with even less distracting variables. The models were as follows:
+
+M1: Only weekly sales, no additional features.
+M2: All features, no other trics.
+M3: 
 
 
 
