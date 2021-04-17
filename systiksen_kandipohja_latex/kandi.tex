@@ -151,28 +151,34 @@ hyödynttää makroa $\backslash$abstracttext luodessasi lomakkeen tiivistelmä�
 %%% Työn rakenne
 %- Ei välttis pakollinen
 
-Businesses need to forecast a multitude of things to succeed. As companies collect more and more data 
-the possibilities of forecastable subjects and possible features increase dramatically. However, one can't just
-thow more features at a model and except it to perform well. Also not all models are suitable for all 
-forecasting tasks. The amount of possible models is endless, but most of them are bad. To find the usefull ones
-we must be able to measure the goodness of a model.
+
+
+% kommentti: too vague, try to focus on the need for being able to compare the performance of models in a systematic way
+% oliskohan nyt parempi?
+Businesses need forecasting to succeed. Correctly forecasting demand for goods is essential for any retail business, 
+as shortages can cause loss of sales. As companies collect more and more data, 
+the possibilities of forecastable subjects and possible features increase dramatically. However, one can not just
+include more features in the model and expect it to perform well. Also, not all models are suitable for all 
+forecasting tasks. The amount of possible models is endless, but most of them will perform poorly. To find the useful ones,
+we must be able to measure the goodness of a model. Being able to objectively compare models allows for systematic 
+approaches of model selection to be adopted.
 
 Model validation is an integral part of a robust modelling framework. Bayesian models are a relatively novel
-model type which has gained a lot of populatiry in recent years as computational power of modern computers 
-has kept rising. As a relatively new method not too many validation metrics have been proposed with these kinds
+model type, which has gained considerable popularity in recent years, as computational power of modern computers 
+has kept rising. As a relatively new method, not too many validation metrics have been proposed with these kinds
 of models in mind.
 
 The current state of model validation for bayesian models can be described as "unsatisfactory". Information
-criterions which try to predict out of sample fit can have strong biases and some may not take into consideration
-the nature of bayesian models and distributions of parameters. Cross validation can be computationally extremely
-intensive. Also most information criterions are based on a loss function proportional to the root mean square of errors,
-but that may not always be the most usefull function to optimize for. In some businesses the consecuences of errors
-in forecasts can be described better with the mean absotule percentage error. All in all there does not
+criteria that try to predict out of sample fitness can have strong biases, and some may not take into consideration
+the nature of bayesian models and distributions of parameters. Cross validation can be extremely computationally 
+intensive. Also, most information criteria are based on a loss function proportional to the root mean square of errors,
+but that may not always be the most useful function to optimize for. In some businesses the consequences of errors
+in forecasts can be described better with the mean absolute percentage error. All in all there does not
 exist a clearly better method for solving all bayesian model validation problems.
 
-In this paper we will model sales timeseries of some Wallmart stores in the United States. We will be using 
+In this thesis we will model sales time series of some Wallmart stores in the United States. We will be using 
 the Facebook's Prophet modelling framework. It consists of a flexible bayesian model which can be customized 
-to fit a wide range of possible time series modelling tasks. We will implement some information criterions 
+to fit a wide range of possible time series modelling tasks. We will implement some information criteria 
 for the model and compare it to more ad-hoc methods for model validation. 
 
 
@@ -226,14 +232,14 @@ for the model and compare it to more ad-hoc methods for model validation.
 % - ero point predictionin ja muiden välillä
 
 
-In retail business many things can be a subject for optimizing. Predictions of sales can be used
-to minimize waste and ensure sufficient supply of goods. Advertising products can yield greater sales
+Predictions of sales can be used
+to minimize waste and ensure sufficient supply of goods. Advertising products can yield greater sales,
 but not all ads are equally effective. Shifting marketing investments to more impactfull marketing channels
 can increase sales while keeping costs the same. Both of these examples demonstrate scenarios where statistical models can be used to
-avoid making unoptimal decisions my manual guesswork.
+avoid making suboptimal decisions.
 
-Models can be viewed as simplifications of reality. This means that no model never really mathces the true data generating processes, 
-but if we can formulate a model that works well enough we can try to draw some conclusions from them. Most of the models we are concerned with
+Models can be viewed as simplifications of reality. This means that no model never really matches the true data generating processes, 
+but if we can formulate a model that works well enough, we can try to draw some conclusions from them. Most of the models we are concerned with
 link together some explanatory variables to the measured data. The parameters of the function are learned by fitting the data to the model.
 The fitted model can then be used to predict future observations if we can know the explanatory variables beforehand. The fitted model parameters
 can also give insight on the behaviour of the physical world, assuming that said parameters have a sensible interpretation.
@@ -292,12 +298,47 @@ changepoints. After the last change point the model also assumes a linear trend.
 the actual time interval between datapoints does not have to be constant.
 
 Each of the five fitted models is an prophet model with different settings and features. The models were constructed to showcase the behaviour of the metrics
-in situations where the model is used as one could use it in a busiess environment, overfitting seasonality, a case where a data-generating model can be constructed
-from the explanatory variables, and a case similar to the last-mentioned but with even less distracting variables. The models were as follows:
+in situations where the model is used as one could use it in a business environment, overfitting seasonality, a case where a data-generating model can be constructed
+from the explanatory variables, and a case similar to the last-mentioned but with even less distracting variables. The model differences are represented in table \ref{tab:model_settings}. 
 
-M1: Only weekly sales, no additional features.
-M2: All features, no other trics.
-M3: 
+% M1: Only weekly sales, no additional features.
+% M2: All features, no other tricks.
+% M3: The response variable is given as a explanatory variable. Perfect predictions can thus be obtained with this model.
+% M4: Seasonality is modeled with 20 coefficients instead of 10.
+% M5: Similar to M3, but seasonality is disabled, and trend has only one changepoint. 
+
+\begin{table}[]
+	\caption{\label{tab:model_settings} Different settings used in each model. Extra features are fuel price, CPI, unemployment and temereature.}
+	\begin{tabular}{|l|l|l|l|l|l|}
+		\hline
+																		& \textbf{M1} & \textbf{M2} & \textbf{M3} & \textbf{M4} & \textbf{M5} \\ \hline
+		Yearly seasonality coefficients & 10          & 10          & 10          & 20          & None        \\ \hline
+		Extra features                  &             & X           &             &             &             \\ \hline
+		Trend changepoints              & 25          & 25          & 25          & 25          & 1           \\ \hline
+		Response variable as regressor  &             &             & X           &             & X           \\ \hline
+		\end{tabular}
+\end{table}
+
+
+% Joku lörinä M-open, M-closed yms. jutuista olis aika hyvä just tässä.
+
+% Metriikat
+
+The models were compared using five diferent metrics. The metrics used were Akaike information criterion (AIC), deviance information criterion (DIC),
+Watanabe-Aikaike information criterion (WAIC), mean average percentage error (MAPE), and 10-fold cross validation. The information criterions are calculated using only
+in-sample fits. They aim to estimate the out-of-sample predictive performance of the model using the likelihood of past observations. Notably only WAIC of the information criterions
+fully considers the bayesian nature of the model. It utilises the whole posterior distribution instead of some aggregated values. MAPE is calculated by reserving a 
+small portion of data from the tail of the dataset to act as a test set. The percentage errors of the predictions are then averaged to obtain MAPE. 10-fold cross validation
+is calculated by assigning randomly 1/10 of the datapoints as test set and then calculating the likelihood of the prediction for the test set. This is done 10 times
+so that each datapoint belongs to the test set once. 10-fold CV is the average of the results.
+
+% Miten MAPE eroaa likelihood-jutuista
+
+% Perustelut just näiden metriikoiden valinnalle
+
+% Perustelu 10-fold cv:n datan droppaukselle, jossa ennustetta ei lasketa yhtenäiselle ajanjaksolle
+
+
 
 
 
@@ -397,7 +438,7 @@ Applying the metrics yielded promising results. The results are presented visual
 AIC and DIC ranked all the models similarly for all the datasets, but there were differences in the margins between the models.
 WAIC seemed to mostly agree with AIC and DIC, but in datasets B and C the order of models m1 and m4 was reversed. 
 
-Rankign by MAPE has many similarities with the information criterion rankings. However the model m5 performed worse with all 
+Ranking by MAPE has many similarities with the information criterion rankings. However the model m5 performed worse with all 
 datasets, dropping behind m3 in A and C, but also behind m1 and m4 in B. In dataset B MAPE ranked m1 better than m4. This agrees
 with the WAIC ranking, but it is the other way around with AIC and DIC. The other notable difference in MAPE scores is that in datasets
 A and B the model m2 seems to perform much worse than the other models. However this phenomenon is not present in C. 
@@ -408,6 +449,16 @@ takes the last place, while m2 and m1 get a score similar to each other. M2 was 
 the margin was rather slim.
 
 % TODO: VOIKO OLLA NIIN, ETTÄ 10-FOLD CV:SSÄ KÄY M4:N KANSSA SITEN, ETTÄ VAAN JOKU NIISTÄ FITEISTÄ MENEE TOSI PAHASTI PIELEEN???
+
+Overall it seems, that the metrics correctly recognize the "data generating models" from other models. Also M5 mostly ranks better than M3, as it has less 
+non-informative regressors. When it comes to the ranking of models M1, M2 and M4, the results are not as clear. In store groups A and B M2 performs much worse than the other models when evaluating with MAPE. This likely indicates, that the model overestimates the importance of the external regressors. As the regressors have
+trends, the prediction drifts off the actual sales. In 10-fold cv this is not observed, as the datapoints in test set are picked randomly. The test points have similar-valued training points next to them, thus the trend does not have time to cause the predictions to drift off.
+
+10-fold cv appears to rank M4 worse than the other metrics. This may be due to overfitting the seasonality with too little training data. As the model is evaluated with 10-fold cv, 10\% of the data is reserved for testing. This reduction of training data can be the cause for the model to overfit the seasonality, as it had a greater number of coefficients to fit than the other models.
+
+% TODO: testaa molemmat yllä mainitut hypoteesit: MAPE:n ja cv:n erot, M4 overfittaus jos vaan 90% datasta käytössä
+
+One thing to keep in mind when examining the results is the difference of loss functions used in the metrics, in particular the difference in MAPE and the others. Other metrics are based on estimating the log-likelihood of out-of-sample predictions, while MAPE evaluates the mean absolute percentage error. Log-likelihood is proportional to MSE as the model consist an normally distributed error term with a constant variance. In a perfect world the loss function would be representing the actual losses due to errors in predictions. However, it is really difficult to estimate those accurately. 
 
 
 % Pohditaan syitä tuloksille
@@ -422,9 +473,9 @@ the margin was rather slim.
 \begin{figure}[htb]
 	\centering
 	\includegraphics[height=8cm]{../plots/metrics/metrics_plot_A.pdf}
-	\caption{Visualisation of model validation metric results applied on store group A. Arranged such that visually lower is better.
+	\caption{Visualization of model validation metric results applied on store group A. Arranged such that visually lower is better.
 	Each axis is scaled so that extreme values are at the ends. Please note the inverted axis of 10-fold cross validation metric. For 
-	precise values please refer to table \ref{tab:metrics_A}.
+	precise values please refer to Table \ref{tab:metrics_A}.
 	}
 	\label{fig:metrics_A}
 \end{figure}

@@ -7,6 +7,6 @@
 \contentsline {subsection}{\numberline {2.1}Rakenne}{7}{subsection.2.1}%
 \contentsline {section}{\numberline {3}Datasets and methods}{7}{section.3}%
 \contentsline {section}{\numberline {4}Results}{8}{section.4}%
-\contentsline {section}{\numberline {5}Summary}{10}{section.5}%
-\contentsline {section}{\numberline {A}Esimerkki liitteestä}{14}{appendix.A}%
-\contentsline {section}{\numberline {B}Toinen esimerkki liitteestä}{15}{appendix.B}%
+\contentsline {section}{\numberline {5}Summary}{11}{section.5}%
+\contentsline {section}{\numberline {A}Esimerkki liitteestä}{15}{appendix.A}%
+\contentsline {section}{\numberline {B}Toinen esimerkki liitteestä}{16}{appendix.B}%
