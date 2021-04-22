@@ -17,7 +17,7 @@
 \setcitestyle{authoryear,open={(},close={)}}
 
 
-%\thesistitle{Bayesian model validation merics in retail datasets}
+
 
 \degreeprogram{Engineering Physics and Mathematics}
 
@@ -90,7 +90,6 @@ research topic, the methods you have used, and the results you obtained.
 \newpage
 
 
-% TODO: Paavo kans mukaan advisoreiksi
 \thesistitle{Bayeslaisten mallien validointi vähittäismyynnin aineistoissa}
 \degreeprogram{Teknillinen fysiikka ja matematiikka}
 \major{Matematiikka ja systeemitieteet}
@@ -244,12 +243,21 @@ link together some explanatory variables to the measured data. The parameters of
 The fitted model can then be used to predict future observations if we can know the explanatory variables beforehand. The fitted model parameters
 can also give insight on the behaviour of the physical world, assuming that said parameters have a sensible interpretation.
 
-Bayesian models differ from frequentist models in two major ways. In bayesian thinking parameters are not expressed as point values but distibutions.
-Uncertainty can be expressed with wider distributions. New data is not the sole source of the newly fitted parameters as it is merely used to
-update prior beliefs about parameter distribution. 
+% Okei näille vois olla jotain lähteitä kans empiirisen mutuilun lisäks
+Bayesian models differ from frequentist models in two major ways. Firstly, in bayesian thinking parameters are not expressed as point values but distributions.
+Secondly, the distributions are affected also by the prior beliefs of the distribution. This means, that the data is not the only source of information affecting
+the results. These qualities allow for embedding uncertainty and business knowledge in the models. Highly informative priors can also make the models behave more 
+robustly in case the data has some outliers. 
 
+% TODO: "Kirjallisuuskatsaus" alkaa nyt
+% Yleiskuva: On tapoja, mutta kussakin on puutteita. Perustuu vahvasti siihen survey-paperiin ja understanding... paperiin
+% - Käydään läpi tavat ja niiden puutteet (varotaan toistoa intron kanssa)
+% - M-open ja M-closed 
+Model selection methods can be categorized by the view they take on whether the considered models contain the actual data generating model. This data generating
+model would be represent the actual real world process by which some events result in the observed data. M-closed view assumes that the model is present is the 
+considered models. M-open view instead attempts to model the data with minimal assumptions. M-open view is more often applicable than M-closed.  
 
-
+M-open methods for model selection can be further classified by reuse of data. M-open assumes that pseudo-random samples of future data can be obtained. 
 
 
 
@@ -461,7 +469,7 @@ trends, the prediction drifts off the actual sales. In 10-fold cv this is not ob
 One thing to keep in mind when examining the results is the difference of loss functions used in the metrics, in particular the difference in MAPE and the others. Other metrics are based on estimating the log-likelihood of out-of-sample predictions, while MAPE evaluates the mean absolute percentage error. Log-likelihood is proportional to MSE as the model consist an normally distributed error term with a constant variance. In a perfect world the loss function would be representing the actual losses due to errors in predictions. However, it is really difficult to estimate those accurately. 
 
 
-% Pohditaan syitä tuloksille
+% Pohditaan syitä tuloksille 
 % mitä tulokset tarkoittavat nyt sitten mallien validoinnin kannalta?
 % - Onko järkevää käyttää *IC-metriikoita? Vai olisko MAPE sittenkin hyvä?
 % - Muistutetaan lukijaa loss-functionin merkityksestä
