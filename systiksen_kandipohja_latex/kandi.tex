@@ -16,9 +16,6 @@
 \bibliographystyle{plainnat}
 \setcitestyle{authoryear,open={(},close={)}}
 
-
-
-
 \degreeprogram{Engineering Physics and Mathematics}
 
 \major{Mathematics and Systems Sciences}
@@ -31,15 +28,8 @@
 \thesisauthor{Leevi Rönty}
 
 \thesistitle{Bayesian model validation metrics in retail datasets}
-%\thesistitle[Opinnäytteen otsikko]{Opinnäyteen\\ otsikko}
-%%
 
-%%
 \place{Espoo}
-%%
-
-
-
 \date{14.10.2020}
 
 \supervisor{Prof.\ Fabricio Oliveira}
@@ -72,8 +62,6 @@ lomakkeessa oleva teksti.
 All other rights are reserved.
 }
 
-
-%% Kaikki mikä paperille tulostuu, on tämän jälkeen
 \begin{document}
 
 \makecoverpage{}
@@ -115,13 +103,11 @@ hyödynttää makroa $\backslash$abstracttext luodessasi lomakkeen tiivistelmä�
 
 \end{abstractpage}
 
-%% Sisällysluettelo
+
 \thesistableofcontents
 
 \cleardoublepage
 
-%% Leipäteksti alkaa
-%%
 \section{Introduction}
 
 %Modelling and forecasting of sales timeseries helps in deciding marketing investments
@@ -150,10 +136,6 @@ hyödynttää makroa $\backslash$abstracttext luodessasi lomakkeen tiivistelmä�
 %%% Työn rakenne
 %- Ei välttis pakollinen
 
-
-
-% kommentti: too vague, try to focus on the need for being able to compare the performance of models in a systematic way
-% oliskohan nyt parempi?
 Businesses need forecasting to succeed. Correctly forecasting demand for goods is essential for any retail business, 
 as shortages can cause loss of sales. As companies collect more and more data, 
 the possibilities of forecastable subjects and possible features increase dramatically. However, one can not just
@@ -181,54 +163,7 @@ to fit a wide range of possible time series modelling tasks. We will implement s
 for the model and compare it to more ad-hoc methods for model validation. 
 
 
-
-%\section{Aikaisempi tutkimus}
 \section{Background}
-
-%Tässä osassa selvitetään, mitä tutkimuksen kohteena olevasta aiheesta tiedetään
-%entuudestaan. Selvityksen tulee kattaa tasapainoisesti koko tutkimuskenttä. 
-
-%Kun opinnäytetyötä kirjoitetaan, on noudatettava ohjeita, jotka koskevat
-%opinnäytteen rakennetta, käytäntöjä, muotoseikkoja sekä ulkoasua. Esitellään
-%näitä ohjeita tarkemmin.
-
-%% Osan hienojaottelua alaosiin, eikä välttämättä edes tarpeen, tässä vain
-%% esimerkkinä. Käytä harkintasi mukaan osan jaottelua, joskus alaotsikot
-%% selventävät asioita ja joskus vain sirpaloittavat tarpeettomasti tekstiä.
-%%  Jaottelu menee seuraavasti:
-%% \section{osan otsikko} 
-%% \subsection{alaotsikko}
-%% \subsubsection{ala-alaotsikko}
-%% Tätä pitemälle ei pidä jaotella. 
-%%
-%% Three levels of hierarchy in sectioning should be enough
-
-
-
-%Työn tausta:
-%– Esitellään, mitä kirjallisuudessa on aiemmin esitetty
-%– Formaatti: ”Henkilöt X tutkivat asiaa Y ja tulivat siihen
-%johtopäätökseen, että Z”
-%– Oman työn kontribuutiota voi tässä osiossa peilata
-%kirjallisuuteen, joskin se on syytä pitää taka-alalla
-%– Teknistä sanastoa saa käyttää, mutta ei kaavoja tai muuta
-%matemaattista notaatiota
-
-
-% Bayesian models
-% - What models are
-% - What bayesian models do
-% - Why bayesian models
-
-
-% Model validation
-% A survey of Bayesian predictive methods
-% for model assessment, selection and
-% comparison
-% - Vehtarin paperista inspistä
-% - Myös point predictive -jutut
-% - Kans pivotal quantities
-% - ero point predictionin ja muiden välillä
 
 
 Predictions of sales can be used
@@ -249,24 +184,22 @@ Secondly, the distributions are affected also by the prior beliefs of the distri
 the results. These qualities allow for embedding uncertainty and business knowledge in the models. Highly informative priors can also make the models behave more 
 robustly in case the data has some outliers. 
 
-% TODO: "Kirjallisuuskatsaus" alkaa nyt
-% Yleiskuva: On tapoja, mutta kussakin on puutteita. Perustuu vahvasti siihen survey-paperiin ja understanding... paperiin
-% - Käydään läpi tavat ja niiden puutteet (varotaan toistoa intron kanssa)
-% - M-open ja M-closed 
 Model selection methods can be categorized by the view they take on whether the considered models contain the actual data generating model. This data generating
-model would be represent the actual real world process by which some events result in the observed data. M-closed view assumes that the model is present is the 
-considered models. M-open view instead attempts to model the data with minimal assumptions. M-open view is more often applicable than M-closed.  
+model would represent the actual real world process by which some events result in the observed data. M-closed view assumes that the model is present in the 
+considered models. M-open view instead attempts to model the data with minimal assumptions and is thus more applicable with real-world data. 
+%M-open view is more often applicable than M-closed.  
 
-M-open methods for model selection can be further classified by reuse of data. M-open assumes that pseudo-random samples of future data can be obtained. 
+\cite{vehtari2012} describe multiple different approaches for model selection. The most often used methods are information criteria, hold-out predictive, and
+cross validation. None of the most popular methods make explicit assumptions of the "true" model and are thus rather simple to implement. The methods differ in how
+they reuse data when evaluating model performance. Information criteria are based on calculating the training utility of the model and adding a bias term that attempts
+to correct for the reuse of training data in model evaluation to prevent overfitting to the available data. Hold-out predictive methods separate the data to a training
+and testing set. The testing set is used to evaluate the utility function for the model that has been trained using the training data. The method is considered to be robust
+if enough training and testing data is available. Cross validation takes this hold-out approach a step further by splitting the dataset and training the model 
+multiple times. This allows for all of the data to be used in testing once. If the amount of available past observations is limited this can help with robustness of evaluation.
+% Vielä ehkä joku backgrounding conclusion joka olis lähellä vehtarin conclusionia 
 
-
-
-\subsection{Rakenne}
 
 \section{Datasets and methods}
-
-%Tässä osassa kuvataan käytetty tutkimusaineisto ja tutkimuksen metodologiset
-%valinnat, sekä kerrotaan tutkimuksen toteutustapa ja käytetyt menetelmät.
 
 
 % Dataset perusjutut
@@ -275,11 +208,14 @@ The original dataset consists of department-level weekly sales data of 45 stores
 20.2.2010 to 26.10.2012. Each store location is associated with features that may help with sales prediction. 
 The features are temperature, unemployment, price of gas, and consumer price index CPI. Also the store size
 and type of store is known. The original dataset contains information about markdowns, but this feature is available only from 11.11.2011 onwards.
-This renders the feature useless, as it is hard to compensate for the missing data.
+This renders the feature useless, as the effect of the missing markdowns will not be attributed correctly, skewing the results. For example, a spike in sales could be due to
+markdown campaign or seasonality. If the markdown data would be complete for the whole dataset the effect could be separated from seasonality. However, as there is
+markdown data for less than two years, some spikes will not have data about possible markdowns. This leads to the uplift to be attributed to seasonality, which may not be correct.
+Leaving markdowns out of the features will effectively cause the uplift from markdowns to be attributed to noise if the markdown campaigns are not seasonal.
 
-The sales data for store groups A and B demonstrate strong seasonality. Especially during decembers the turnover spikes due to 
-strong holiday effect. For store group C the sales seem a lot more consistent. Temperature is the only feature that clearly behaves seasonally. 
-Originally unemployment was expressed to equal the latest unemployment statistic. This made the feature behave rather dincontinously. To get around
+The sales data for store groups A and B demonstrate strong seasonality. Especially during Decembers the turnover spikes due to 
+strong holiday effect. For store group C the sales are more consistent throughout the year. Temperature is the only feature that clearly behaves seasonally. 
+Originally unemployment was expressed to equal the latest unemployment statistic. This made the feature behave rather discontinuously. To get around
 the discontinuity affecting the results, the unemployment for each week was calculated by interpolating unemployment from last and next changepoint.
 After the transformation, both unemployment and consumer price index (CPI) have a clear trend. 
 
@@ -291,23 +227,32 @@ After the transformation, both unemployment and consumer price index (CPI) have 
 
 % Dataset aggregoinnit
 
-The original dataset contains sales data on a departement level. There are a total of 81 departements, but not all are present in every
-store. We are still left with 3331 sales timeseries. Not all timeseries can be modelled of fitted, thus we need to reduce the amount of data to have any
-hope of modelling anything in a reasonable time. The departement-level sales are first aggregated to store-level sales by summing sales in each departement
-in each store. This still leaves us with 45 timeseries, which is still a bit too much. To simplify things a bit more, the stores are further aggregated based on
+The original dataset contains sales data on a department level. There are a total of 81 departments, but not all are present in every
+store. We are still left with 3331 sales time series. Not all time series can be modelled of fitted, thus we need to reduce the amount of data to have any
+hope of modelling anything in a reasonable time. The department-level sales are first aggregated to store-level sales by summing sales in each department
+in each store. This still leaves us with 45 time series, which is still a bit too much. To simplify things a bit more, the stores are further aggregated based on
 store type (A, B or C). The features for these store groups are obtained by calculating a size-weighted average. As the aggregation process of the features can 
-render the features less meaningfull, a small number of stores is also selected for modelling from each store group.
+render the features less meaningful, a small subset of stores is also selected from each store group. Comparing these stores to the store groups will reveal if the aggregeation
+lessens the predictive performance of the models using the provided features.
 
 % Mallit
 
-The prophet model is a linear model used to predict time series. The model consists of seasonality components, trend, and possible explanatory variables. The 
-seasonalities are modelled using a fourier approximation with a limited amount of coefficients. Trend is modelled linearly between a number of pre-determined 
-changepoints. After the last change point the model also assumes a linear trend. The prophet model handles time as a feature ranging from 0 to 1. As such, 
-the actual time interval between datapoints does not have to be constant.
+The Prophet model by \cite{Prophet} is a linear model that is used to predict time series. The model consists of seasonality components, piece-wisely linear trend, and possible explanatory variables such as holidays. The 
+seasonalities are modelled using a Fourier approximation with a limited number of coefficients. Trend is modelled linearly between a number of pre-determined 
+changepoints. After the last change point the model also assumes a linear trend. The prophet model treats time as a feature ranging from 0 to 1. Notably, the prediction
+does not directly depend on previous observations but seasonality and trend. They are calculated using also the other observations, but that calculation does not require a constant time difference between observations.
+As such, the model can handle inconsistent time intervals between datapoints. This means that the training and testing set do not have to consist of sequential observations.
 
-Each of the five fitted models is an prophet model with different settings and features. The models were constructed to showcase the behaviour of the metrics
-in situations where the model is used as one could use it in a business environment, overfitting seasonality, a case where a data-generating model can be constructed
-from the explanatory variables, and a case similar to the last-mentioned but with even less distracting variables. The model differences are represented in table \ref{tab:model_settings}. 
+
+Each of the five used models is an Prophet model with different settings and features. The models are labeled M1 to M5. The first model was chosen to act as a benchmark
+to be compared against the other models. This should demonstrate if changes to the base model yield any improved predictive performance. The second model adds on the benchmark model
+by also incorporating the additional features present in the dataset. These were temperature, CPI, unemployment rate and fuel price. The fourth model does not utilize the extra features. 
+It attempts to demonstrate the behaviour of the metrics with overfitted models. The number of Fourier coefficients for seasonality are doubled from the benchmark model.
+Models three and five differ fundamentally from the other models as they are not reasonably possible to implement in a real world prediction scenario. Both of them are 
+given the sales time series as an explanatory variable. This is done to study the behaviour of the metrics in situations where the models actually represent the real world 
+data generating process. In this case the process is rather simple, as the correct prediction should follow trivially from the features. Model three is equal to the 
+benchmark model extended by this feature. Model five has also less trend changepoints and disabled seasonality. As M5 should produce the exact same output with less variables
+the information criteria should always rank it as better performing. The differences between used models are displayed in table \ref{tab:model_settings}.
 
 % M1: Only weekly sales, no additional features.
 % M2: All features, no other tricks.
@@ -316,7 +261,7 @@ from the explanatory variables, and a case similar to the last-mentioned but wit
 % M5: Similar to M3, but seasonality is disabled, and trend has only one changepoint. 
 
 \begin{table}[]
-	\caption{\label{tab:model_settings} Different settings used in each model. Extra features are fuel price, CPI, unemployment and temereature.}
+	\caption{\label{tab:model_settings} Different settings used in each model. Extra features are fuel price, CPI, unemployment and temperature.}
 	\begin{tabular}{|l|l|l|l|l|l|}
 		\hline
 																		& \textbf{M1} & \textbf{M2} & \textbf{M3} & \textbf{M4} & \textbf{M5} \\ \hline
@@ -332,13 +277,14 @@ from the explanatory variables, and a case similar to the last-mentioned but wit
 
 % Metriikat
 
-The models were compared using five diferent metrics. The metrics used were Akaike information criterion (AIC), deviance information criterion (DIC),
+The models were compared using five different metrics. The metrics used were Akaike information criterion (AIC), deviance information criterion (DIC),
 Watanabe-Aikaike information criterion (WAIC), mean average percentage error (MAPE), and 10-fold cross validation. The information criterions are calculated using only
 in-sample fits. They aim to estimate the out-of-sample predictive performance of the model using the likelihood of past observations. Notably only WAIC of the information criterions
-fully considers the bayesian nature of the model. It utilises the whole posterior distribution instead of some aggregated values. MAPE is calculated by reserving a 
-small portion of data from the tail of the dataset to act as a test set. The percentage errors of the predictions are then averaged to obtain MAPE. 10-fold cross validation
-is calculated by assigning randomly 1/10 of the datapoints as test set and then calculating the likelihood of the prediction for the test set. This is done 10 times
-so that each datapoint belongs to the test set once. 10-fold CV is the average of the results.
+fully considers the bayesian nature of the model. It utilizes the whole posterior distribution instead of some aggregated values. MAPE is calculated in the spirit of hold-out predictive methods 
+by reserving a small portion of data from the tail of the dataset to act as a test set. The percentage errors of the predictions are then averaged to obtain MAPE. 10-fold cross validation
+is calculated by assigning randomly 1/10 of the datapoints as test set and then calculating the likelihood of the prediction for the test set. This is performed ten times
+so that each datapoint belongs to the test set once. 10-fold CV is the average of the results. Test set selection of MAPE is demonstrated in figure \ref{fig:hold_out_data} and 
+one of the 10-fold cv splits can be found in figure \ref{fig:cv_demo}. 
 
 % Miten MAPE eroaa likelihood-jutuista
 
@@ -441,8 +387,8 @@ so that each datapoint belongs to the test set once. 10-fold CV is the average o
 
 
 
-Applying the metrics yielded promising results. The results are presented visually in figures \ref{fig:metrics_A}, 
-\ref{fig:metrics_B} and \ref{fig:metrics_C}. The visual representation highlights the order different metrics rank the models.
+Applying the metrics yielded promising results. The results are presented visually in figure \ref{fig:metrics_visualization}. 
+The visual representation highlights the order different metrics rank the models.
 AIC and DIC ranked all the models similarly for all the datasets, but there were differences in the margins between the models.
 WAIC seemed to mostly agree with AIC and DIC, but in datasets B and C the order of models m1 and m4 was reversed. 
 
@@ -478,105 +424,100 @@ One thing to keep in mind when examining the results is the difference of loss f
 
 
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[height=8cm]{../plots/metrics/metrics_plot_A.pdf}
-	\caption{Visualization of model validation metric results applied on store group A. Arranged such that visually lower is better.
+\begin{figure}
+	\begin{subfigure}[htb]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../plots/metrics/metrics_plot_A.pdf}
+		\caption{Store group A}
+		\label{fig:metrics_A}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[htb]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../plots/metrics/metrics_plot_B.pdf}
+		\caption{Store group B}
+		\label{fig:metrics_B}
+	\end{subfigure}
+	
+	\begin{subfigure}[htb]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../plots/metrics/metrics_plot_C.pdf}
+		\caption{Store group C}
+		\label{fig:metrics_C}
+	\end{subfigure}
+	\caption{\label{fig:metrics_visualization}Visualization of model validation metric results by store group. Arranged such that visually lower is better.
 	Each axis is scaled so that extreme values are at the ends. Please note the inverted axis of 10-fold cross validation metric. For 
-	precise values please refer to Table \ref{tab:metrics_A}.
-	}
-	\label{fig:metrics_A}
+	precise values please refer to Table \ref{tab:metrics_results}}
 \end{figure}
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[height=8cm]{../plots/metrics/metrics_plot_B.pdf}
-	\caption{Caption this}
-	\label{fig:metrics_B}
-\end{figure}
+\begin{table}
+	\caption{\label{tab:metrics_results}Numerical representation of the validation metric results applied by store group.}
+	\begin{subtable}[t]{\textwidth}
+		\caption{\label{tab:metrics_A}Store group A}
+		\csvreader[%
+		tabular={|c|c|c|c|c|c|},
+					table head = \hline\textbf{Model} &\textbf{AIC} &\textbf{DIC} &\textbf{WAIC} &\textbf{MAPE}&\textbf{10-fold CV}\\\hline,
+					late after line= \\,
+					late after last line=\\\hline %
+					]{../tables/rounded/aggregated_A_metrics.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
+					{\mname & \aic & \dic & \waic & \MAPE & \cv}
+					\centering
+					
+	\end{subtable}
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[height=8cm]{../plots/metrics/metrics_plot_C.pdf}
-	\caption{Caption this}
-	\label{fig:metrics_C}
-\end{figure}
+	\begin{subtable}[t]{\textwidth}
+		\caption{\label{tab:metrics_B}Store group B}
+		\csvreader[%
+		tabular={|c|c|c|c|c|c|},
+					table head = \hline\textbf{Model} &\textbf{AIC} &\textbf{DIC} &\textbf{WAIC} &\textbf{MAPE}&\textbf{10-fold CV}\\\hline,
+					late after line= \\,
+					late after last line=\\\hline %
+					]{../tables/rounded/aggregated_B_metrics.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
+					{\mname & \aic & \dic & \waic & \MAPE & \cv}
+					\centering
+					
+	\end{subtable}
 
-\begin{table*}[!ht]
-	\caption{\label{tab:metrics_A}Results of validation metrics applied on store group A}
-\csvreader[%
-	tabular={|c|c|c|c|c|c|},
-				table head = \hline\textbf{Model} &\textbf{AIC} &\textbf{DIC} &\textbf{WAIC} &\textbf{MAPE}&\textbf{10-fold CV}\\\hline,
-				late after line= \\,
-				late after last line=\\\hline %
-				]{../tables/rounded/aggregated_A_metrics.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
-				{\mname & \aic & \dic & \waic & \MAPE & \cv}
-				\centering
-				
-\end{table*}
+	\begin{subtable}[t]{\textwidth}
+		\caption{\label{tab:metrics_C}Store group C}
+		\csvreader[%
+		tabular={|c|c|c|c|c|c|},
+					table head = \hline\textbf{Model} &\textbf{AIC} &\textbf{DIC} &\textbf{WAIC} &\textbf{MAPE}&\textbf{10-fold CV}\\\hline,
+					late after line= \\,
+					late after last line=\\\hline %
+					]{../tables/rounded/aggregated_C_metrics.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
+					{\mname & \aic & \dic & \waic & \MAPE & \cv}
+					\centering
+	\end{subtable}
+\end{table}
 
-\begin{table*}[!ht]
-	\caption{\label{tab:metrics_B}Results of validation metrics applied on store group B}
-\csvreader[%
-	tabular={|c|c|c|c|c|c|},
-				table head = \hline\textbf{Model} &\textbf{AIC} &\textbf{DIC} &\textbf{WAIC} &\textbf{MAPE}&\textbf{10-fold CV}\\\hline,
-				late after line= \\,
-				late after last line=\\\hline %
-				]{../tables/rounded/aggregated_B_metrics.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
-				{\mname & \aic & \dic & \waic & \MAPE & \cv}
-				\centering
-				
-\end{table*}
-
-\begin{table*}[!ht]
-	\caption{\label{tab:metrics_C}Results of validation metrics applied on store group C}
-	\csvreader[%
-	tabular={|c|c|c|c|c|c|},
-				table head = \hline\textbf{Model} &\textbf{AIC} &\textbf{DIC} &\textbf{WAIC} &\textbf{MAPE}&\textbf{10-fold CV}\\\hline,
-				late after line= \\,
-				late after last line=\\\hline %
-				]{../tables/rounded/aggregated_C_metrics.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
-				{\mname & \aic & \dic & \waic & \MAPE & \cv}
-				\centering
-\end{table*}
-
-% \begin{figure}[htb] % Perus prophet-plotti, varmaan hyödytön
-% 	\centering
-% 	\includegraphics[height=8cm]{../plots/plot_demo.pdf}
-% 	\caption{Demo of what kind of precidtion plots the Propchet package can produce
-%   by default. These may be helpful (?)}
-% 	\label{fig:plot_demo}
-% \end{figure}
 
 
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[height=8cm]{../plots/forecasts/cv_metric_demo_plot.pdf}
-	\caption{Demonstrating the cv metric calculation}
+	\caption{Demonstrating the cv metric calculation. Red dots represent the 10\% of the datapoints that were selected for testing set. Model is fitted using training data represented
+	by the black dots. This data splitting and evaluation is repeated ten times until all datapoints have belonged to the test set exactly once.}
 	\label{fig:cv_demo}
 \end{figure}
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[height=8cm]{../plots/forecasts/30_weeks_prediction_demo.pdf}
-	\caption{A prediction 30 weeks in the future. Training data in black, test data in red.}
-	\label{fig:prediction_demo}
+	\caption{Hold-out prediction 30 weeks in the future. Training data in black, test data in red. This train / test split is used in MAPE metric.}
+	\label{fig:hold_out_data}
 \end{figure}
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[height=8cm]{../plots/forecasts/30_weeks_prediction_components_demo.pdf}
-	\caption{Components of the fitted model used in figure \ref{fig:prediction_demo}}
+	\caption{Trend and yearly seasonality components of the fitted model used in figure \ref{fig:hold_out_data}.}
 	\label{fig:prediction_components_demo}
 \end{figure}
 
 
 
-
-
-%\csvautotabular{../tables/single_store_4_of_A_metrics.csv}
-%\section{Yhteenveto}
 \section{Summary} 
 
 %Opinnäytteen tekijä vastaa siitä, että opinnäyte on tässä dokumentissa
@@ -595,6 +536,7 @@ One thing to keep in mind when examining the results is the difference of loss f
 
 
 % Ladataan library.bib
+\clearpage
 \bibliography{library}
 
 
