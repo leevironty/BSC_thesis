@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.20)  29 APR 2021 15:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.20)  4 MAY 2021 17:10
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -835,44 +835,45 @@ Underfull \hbox (badness 10000) in paragraph at lines 70--70
 ] [7] [8]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 263.
+               Default added (so using `tbp') on input line 208.
 
-<../plots/dataset/dataset_plot_y.pdf, id=109, 433.62pt x 289.08pt>
+[9] [10]
+<../plots/dataset/dataset_plot_y.pdf, id=133, 433.62pt x 289.08pt>
 File: ../plots/dataset/dataset_plot_y.pdf Graphic file (type pdf)
 <use ../plots/dataset/dataset_plot_y.pdf>
-Package pdftex.def Info: ../plots/dataset/dataset_plot_y.pdf  used on input line 302.
+Package pdftex.def Info: ../plots/dataset/dataset_plot_y.pdf  used on input line 242.
 (pdftex.def)             Requested size: 341.43124pt x 227.62204pt.
-<../plots/dataset/dataset_plot_temperature.pdf, id=110, 433.62pt x 289.08pt>
+<../plots/dataset/dataset_plot_temperature.pdf, id=134, 433.62pt x 289.08pt>
 File: ../plots/dataset/dataset_plot_temperature.pdf Graphic file (type pdf)
 <use ../plots/dataset/dataset_plot_temperature.pdf>
-Package pdftex.def Info: ../plots/dataset/dataset_plot_temperature.pdf  used on input line 313.
+Package pdftex.def Info: ../plots/dataset/dataset_plot_temperature.pdf  used on input line 253.
 (pdftex.def)             Requested size: 213.39566pt x 142.26357pt.
-<../plots/dataset/dataset_plot_CPI.pdf, id=111, 433.62pt x 289.08pt>
+<../plots/dataset/dataset_plot_CPI.pdf, id=135, 433.62pt x 289.08pt>
 File: ../plots/dataset/dataset_plot_CPI.pdf Graphic file (type pdf)
 <use ../plots/dataset/dataset_plot_CPI.pdf>
-Package pdftex.def Info: ../plots/dataset/dataset_plot_CPI.pdf  used on input line 320.
+Package pdftex.def Info: ../plots/dataset/dataset_plot_CPI.pdf  used on input line 260.
 (pdftex.def)             Requested size: 213.39566pt x 142.26357pt.
 
-Overfull \hbox (2.61105pt too wide) in paragraph at lines 311--324
+Overfull \hbox (2.61105pt too wide) in paragraph at lines 251--264
 [][]  [] 
  []
 
-<../plots/dataset/dataset_plot_fuel_price.pdf, id=112, 433.62pt x 289.08pt>
+<../plots/dataset/dataset_plot_fuel_price.pdf, id=136, 433.62pt x 289.08pt>
 File: ../plots/dataset/dataset_plot_fuel_price.pdf Graphic file (type pdf)
 <use ../plots/dataset/dataset_plot_fuel_price.pdf>
-Package pdftex.def Info: ../plots/dataset/dataset_plot_fuel_price.pdf  used on input line 328.
+Package pdftex.def Info: ../plots/dataset/dataset_plot_fuel_price.pdf  used on input line 268.
 (pdftex.def)             Requested size: 213.39566pt x 142.26357pt.
-<../plots/dataset/dataset_plot_unemployment_interpolated.pdf, id=113, 433.62pt x 289.08pt>
+<../plots/dataset/dataset_plot_unemployment_interpolated.pdf, id=137, 433.62pt x 289.08pt>
 File: ../plots/dataset/dataset_plot_unemployment_interpolated.pdf Graphic file (type pdf)
 <use ../plots/dataset/dataset_plot_unemployment_interpolated.pdf>
-Package pdftex.def Info: ../plots/dataset/dataset_plot_unemployment_interpolated.pdf  used on input line 335.
+Package pdftex.def Info: ../plots/dataset/dataset_plot_unemployment_interpolated.pdf  used on input line 275.
 (pdftex.def)             Requested size: 213.39566pt x 142.26357pt.
 
-Overfull \hbox (2.61105pt too wide) in paragraph at lines 326--339
+Overfull \hbox (2.61105pt too wide) in paragraph at lines 266--279
 [][]  [] 
  []
 
-[9] [10 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/dataset/dataset_plot_y.pdf>] [11 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/dataset/dataset_plot_temperature.pdf> </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/dataset/dataset_plot_CPI.pdf
+[11 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/dataset/dataset_plot_y.pdf>] [12 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/dataset/dataset_plot_temperature.pdf> </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/dataset/dataset_plot_CPI.pdf
 
 pdfTeX warning: pdflatex (file /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/dataset/dataset_plot_CPI.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 > </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/dataset/dataset_plot_fuel_price.pdf
@@ -882,51 +883,51 @@ pdfTeX warning: pdflatex (file /Users/leevironty/kandi/systiksen_kandipohja_late
 
 pdfTeX warning: pdflatex (file /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/dataset/dataset_plot_unemployment_interpolated.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-<../plots/metrics/metrics_plot_A.pdf, id=295, 361.35pt x 433.62pt>
+<../plots/metrics/metrics_plot_A.pdf, id=314, 361.35pt x 433.62pt>
 File: ../plots/metrics/metrics_plot_A.pdf Graphic file (type pdf)
 <use ../plots/metrics/metrics_plot_A.pdf>
-Package pdftex.def Info: ../plots/metrics/metrics_plot_A.pdf  used on input line 430.
+Package pdftex.def Info: ../plots/metrics/metrics_plot_A.pdf  used on input line 359.
 (pdftex.def)             Requested size: 213.39566pt x 256.07838pt.
-<../plots/metrics/metrics_plot_B.pdf, id=296, 361.35pt x 433.62pt>
+<../plots/metrics/metrics_plot_B.pdf, id=315, 361.35pt x 433.62pt>
 File: ../plots/metrics/metrics_plot_B.pdf Graphic file (type pdf)
 <use ../plots/metrics/metrics_plot_B.pdf>
-Package pdftex.def Info: ../plots/metrics/metrics_plot_B.pdf  used on input line 437.
+Package pdftex.def Info: ../plots/metrics/metrics_plot_B.pdf  used on input line 366.
 (pdftex.def)             Requested size: 213.39566pt x 256.07838pt.
 
-Overfull \hbox (2.61105pt too wide) in paragraph at lines 428--441
+Overfull \hbox (2.61105pt too wide) in paragraph at lines 357--370
 []$[]$  $[]$ 
  []
 
-<../plots/metrics/metrics_plot_C.pdf, id=297, 361.35pt x 433.62pt>
+<../plots/metrics/metrics_plot_C.pdf, id=316, 361.35pt x 433.62pt>
 File: ../plots/metrics/metrics_plot_C.pdf Graphic file (type pdf)
 <use ../plots/metrics/metrics_plot_C.pdf>
-Package pdftex.def Info: ../plots/metrics/metrics_plot_C.pdf  used on input line 444.
+Package pdftex.def Info: ../plots/metrics/metrics_plot_C.pdf  used on input line 373.
 (pdftex.def)             Requested size: 213.39566pt x 256.07838pt.
-<../plots/forecasts/cv_metric_demo_plot.pdf, id=300, 722.7pt x 433.62pt>
+<../plots/forecasts/cv_metric_demo_plot.pdf, id=319, 722.7pt x 433.62pt>
 File: ../plots/forecasts/cv_metric_demo_plot.pdf Graphic file (type pdf)
 <use ../plots/forecasts/cv_metric_demo_plot.pdf>
-Package pdftex.def Info: ../plots/forecasts/cv_metric_demo_plot.pdf  used on input line 499.
+Package pdftex.def Info: ../plots/forecasts/cv_metric_demo_plot.pdf  used on input line 428.
 (pdftex.def)             Requested size: 379.36804pt x 227.62204pt.
-<../plots/forecasts/30_weeks_prediction_demo.pdf, id=301, 722.7pt x 433.62pt>
+<../plots/forecasts/30_weeks_prediction_demo.pdf, id=320, 722.7pt x 433.62pt>
 File: ../plots/forecasts/30_weeks_prediction_demo.pdf Graphic file (type pdf)
 <use ../plots/forecasts/30_weeks_prediction_demo.pdf>
-Package pdftex.def Info: ../plots/forecasts/30_weeks_prediction_demo.pdf  used on input line 507.
+Package pdftex.def Info: ../plots/forecasts/30_weeks_prediction_demo.pdf  used on input line 436.
 (pdftex.def)             Requested size: 379.36804pt x 227.62204pt.
-<../plots/forecasts/30_weeks_prediction_components_demo.pdf, id=302, 650.43pt x 433.62pt>
+<../plots/forecasts/30_weeks_prediction_components_demo.pdf, id=321, 650.43pt x 433.62pt>
 File: ../plots/forecasts/30_weeks_prediction_components_demo.pdf Graphic file (type pdf)
 <use ../plots/forecasts/30_weeks_prediction_components_demo.pdf>
-Package pdftex.def Info: ../plots/forecasts/30_weeks_prediction_components_demo.pdf  used on input line 514.
+Package pdftex.def Info: ../plots/forecasts/30_weeks_prediction_components_demo.pdf  used on input line 443.
 (pdftex.def)             Requested size: 341.43124pt x 227.62204pt.
-[12] [13 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/metrics/metrics_plot_A.pdf> </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/metrics/metrics_plot_B.pdf
+[13] [14 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/metrics/metrics_plot_A.pdf> </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/metrics/metrics_plot_B.pdf
 
 pdfTeX warning: pdflatex (file /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/metrics/metrics_plot_B.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 > </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/metrics/metrics_plot_C.pdf
 
 pdfTeX warning: pdflatex (file /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/metrics/metrics_plot_C.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] [14 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/cv_metric_demo_plot.pdf> </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/30_weeks_prediction_demo.pdf
+>] [15] [16 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/cv_metric_demo_plot.pdf> </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/30_weeks_prediction_demo.pdf
 
 pdfTeX warning: pdflatex (file /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/30_weeks_prediction_demo.pdf): PDF inclusion: multiple pdfs with page group included in a single page
->] [15 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/30_weeks_prediction_components_demo.pdf>] (/Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.bbl
+>] [17 </Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/30_weeks_prediction_components_demo.pdf>] (/Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.bbl
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 14.
  (/usr/local/texlive/2020/texmf-dist/tex/latex/lm/t1lmtt.fd
 File: t1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
@@ -935,33 +936,33 @@ Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `lmtt' (encoding: T1).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
-) [16
+) [18
 
-] [17
+] [19
 
-] [18
+] [20
 
 ]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 591.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 591.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 520.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 520.
  (/Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 591.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 591.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 520.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 520.
 Package rerunfilecheck Info: File `kandi.out' has not changed.
-(rerunfilecheck)             Checksum: B32811EF30C0D5B8DFF630705ECA2043;1268.
+(rerunfilecheck)             Checksum: 5031CDAB7F5FE8E8E719E609262B5945;1793.
  ) 
 Here is how much of TeX's memory you used:
- 29537 strings out of 480893
- 514048 string characters out of 5908082
- 1245918 words of memory out of 5000000
- 44423 multiletter control sequences out of 15000+600000
- 594589 words of font info for 117 fonts, out of 8000000 for 9000
+ 29547 strings out of 480893
+ 514174 string characters out of 5908082
+ 1247920 words of memory out of 5000000
+ 44426 multiletter control sequences out of 15000+600000
+ 594680 words of font info for 118 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 76i,10n,68p,882b,2350s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 76i,10n,68p,1624b,2350s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb>
-Output written on /Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.pdf (18 pages, 429079 bytes).
+Output written on /Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.pdf (20 pages, 434457 bytes).
 PDF statistics:
- 662 PDF objects out of 1000 (max. 8388607)
- 41 named destinations out of 1000 (max. 500000)
- 20640 words of extra memory for PDF output out of 20736 (max. 10000000)
+ 687 PDF objects out of 1000 (max. 8388607)
+ 46 named destinations out of 1000 (max. 500000)
+ 20664 words of extra memory for PDF output out of 20736 (max. 10000000)
 

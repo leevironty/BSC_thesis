@@ -136,88 +136,49 @@ hyödynttää makroa $\backslash$abstracttext luodessasi lomakkeen tiivistelmä�
 %%% Työn rakenne
 %- Ei välttis pakollinen
 
-Businesses need forecasting to succeed. Correctly forecasting demand for goods is essential for any retail business, 
-as shortages can cause loss of sales. As companies collect more and more data, 
-the possibilities of forecastable subjects and possible features increase dramatically. However, one can not just
-include more features in the model and expect it to perform well. Also, not all models are suitable for all 
-forecasting tasks. The amount of possible models is endless, but most of them will perform poorly. To find the useful ones,
-we must be able to measure the goodness of a model. Being able to objectively compare models allows for systematic 
-approaches of model selection to be adopted.
 
-Model validation is an integral part of a robust modelling framework. Bayesian models are a relatively novel
-model type, which has gained considerable popularity in recent years, as computational power of modern computers 
-has kept rising. As a relatively new method, not too many validation metrics have been proposed with these kinds
-of models in mind.
+Businesses need forecasting to succeed. Correctly forecasting demand for goods is essential for any retail business, as shortages can cause loss of sales. As companies collect more and more data, the possibilities of forecastable subjects and possible features increase dramatically. However, one can not just include more features in the model and expect it to perform well. Also, not all models are suitable for all forecasting tasks. The number of possible models is endless, but most of them will perform poorly. To find the useful ones, we must be able to measure the goodness of a model. Being able to objectively compare models allows for systematic approaches of model selection to be adopted.
 
-The current state of model validation for bayesian models can be described as "unsatisfactory". Information
-criteria that try to predict out of sample fitness can have strong biases, and some may not take into consideration
-the nature of bayesian models and distributions of parameters. Cross validation can be extremely computationally 
-intensive. Also, most information criteria are based on a loss function proportional to the root mean square of errors,
-but that may not always be the most useful function to optimize for. In some businesses the consequences of errors
-in forecasts can be described better with the mean absolute percentage error. All in all there does not
-exist a clearly better method for solving all bayesian model validation problems.
+Model validation is an integral part of a robust modelling framework. Bayesian models are a relatively novel model type, which has gained considerable popularity in recent years, as computational power of modern computers has kept rising. As a relatively new method, not too many validation metrics have been proposed with these kinds of models in mind.
 
-In this thesis we will model sales time series of some Wallmart stores in the United States. We will be using 
-the Facebook's Prophet modelling framework. It consists of a flexible bayesian model which can be customized 
-to fit a wide range of possible time series modelling tasks. We will implement some information criteria 
-for the model and compare it to more ad-hoc methods for model validation. 
+The current state of model validation for Bayesian models can be described as "unsatisfactory". Information criteria that try to predict out of sample fitness can have strong biases, and some may not take into consideration the nature of Bayesian models and distributions of parameters. Cross validation can be extremely computationally intensive. Also, most information criteria are based on a loss function proportional to the root mean square of errors, but that may not always be the most useful function to optimise for. In some businesses the consequences of errors in forecasts can be described better with the mean absolute percentage error. All in all there does not exist a clearly better method for solving all Bayesian model validation problems.
+
+This thesis attempts to study the usefulness of popular model selection metrics when applied on retail datasets. How can the metrics be applied when the number of past observations is very limited? Does it significantly affect the performance or applicability of some metrics? Retail data can also be very detailed. Low-level modelling can lead to a very high model count or very complex models. How rapid are the evaluation methods? This can significantly impact the usefulness of the metric. As the models are applied to Bayesian models, there is always some randomness involved as the sampling process is not deterministic. Will this play a large role in the stability of the metrics or will the results be always consistent? By answering these questions, we try to conclude about which metrics are useful in which circumstances in business applications.
+
+In this thesis we will model sales time series of some Walmart stores in the United States. We will be using the Facebook's Prophet modelling framework. It consists of a flexible Bayesian model which can be customised to fit a wide range of possible time series modelling tasks. We will implement some information criteria for the model and compare it to more ad-hoc methods for model validation.
+
+
 
 
 \section{Background}
 
 
-Predictions of sales can be used
-to minimize waste and ensure sufficient supply of goods. Advertising products can yield greater sales,
-but not all ads are equally effective. Shifting marketing investments to more impactfull marketing channels
-can increase sales while keeping costs the same. Both of these examples demonstrate scenarios where statistical models can be used to
-avoid making suboptimal decisions.
+Predictions of sales can be used to minimise waste and ensure sufficient supply of goods. Advertising products can yield greater sales, but not all ads are equally effective. Shifting marketing investments to more impactful marketing channels can increase sales while keeping costs the same. Both of these examples demonstrate scenarios where statistical models can be used to avoid making suboptimal decisions.
 
-Models can be viewed as simplifications of reality. This means that no model never really matches the true data generating processes, 
-but if we can formulate a model that works well enough, we can try to draw some conclusions from them. Most of the models we are concerned with
-link together some explanatory variables to the measured data. The parameters of the function are learned by fitting the data to the model.
-The fitted model can then be used to predict future observations if we can know the explanatory variables beforehand. The fitted model parameters
-can also give insight on the behaviour of the physical world, assuming that said parameters have a sensible interpretation.
+Models can be viewed as simplifications of reality. This means that no model never really matches the true data generating processes, but if we can formulate a model that works well enough, we can try to draw some conclusions from them. Most of the models we are concerned with link together some explanatory variables to the measured data. The parameters of the function are learned by fitting the data to the model. The fitted model can then be used to predict future observations if we can know the explanatory variables beforehand. The fitted model parameters can also give insight on the behaviour of the physical world, assuming that said parameters have a sensible interpretation.
 
 % Okei näille vois olla jotain lähteitä kans empiirisen mutuilun lisäks
-Bayesian models differ from frequentist models in two major ways. Firstly, in bayesian thinking parameters are not expressed as point values but distributions.
-Secondly, the distributions are affected also by the prior beliefs of the distribution. This means, that the data is not the only source of information affecting
-the results. These qualities allow for embedding uncertainty and business knowledge in the models. Highly informative priors can also make the models behave more 
-robustly in case the data has some outliers. 
+Bayesian models differ from frequentist models in two major ways. Firstly, in bayesian thinking parameters are not expressed as point values but distributions. Secondly, the distributions are affected also by the prior beliefs of the distribution. This means, that the data is not the only source of information affecting the results. These qualities allow for embedding uncertainty and business knowledge in the models. Highly informative priors can also make the models behave more robustly in case the data has some outliers. 
 
-Model selection methods can be categorized by the view they take on whether the considered models contain the actual data generating model. This data generating
-model would represent the actual real world process by which some events result in the observed data. M-closed view assumes that the model is present in the 
-considered models. M-open view instead attempts to model the data with minimal assumptions and is thus more applicable with real-world data. 
+Model selection methods can be categorised by the view they take on whether the considered models contain the actual data generating model. This data generating model would represent the actual real world process by which some events result in the observed data. M-closed view assumes that the model is present in the considered models. M-open view instead attempts to model the data with minimal assumptions and is thus more applicable with real-world data. 
 %M-open view is more often applicable than M-closed.  
 
-\cite{vehtari2012} describe multiple different approaches for model selection. The most often used methods are information criteria, hold-out predictive, and
-cross validation. None of the most popular methods make explicit assumptions of the "true" model and are thus rather simple to implement. The methods differ in how
-they reuse data when evaluating model performance. Information criteria are based on calculating the training utility of the model and adding a bias term that attempts
-to correct for the reuse of training data in model evaluation to prevent overfitting to the available data. Hold-out predictive methods separate the data to a training
-and testing set. The testing set is used to evaluate the utility function for the model that has been trained using the training data. The method is considered to be robust
-if enough training and testing data is available. Cross validation takes this hold-out approach a step further by splitting the dataset and training the model 
-multiple times. This allows for all of the data to be used in testing once. If the amount of available past observations is limited this can help with robustness of evaluation.
+\cite{vehtari2012} describe multiple different approaches for model selection. The most often used methods are information criteria, hold-out predictive, and cross validation. None of the most popular methods make explicit assumptions of the "true" model and are thus rather simple to implement. The methods differ in how they reuse data when evaluating model performance. Information criteria are based on calculating the training utility of the model and adding a bias term that attempts to correct for the reuse of training data in model evaluation to prevent overfitting to the available data. Hold-out predictive methods separate the data to a training and testing set. The testing set is used to evaluate the utility function for the model that has been trained using the training data. The method is considered to be robust if enough training and testing data is available. Cross validation takes this hold-out approach a step further by splitting the dataset and training the model multiple times. This allows for all of the data to be used in testing once. If the amount of available past observations is limited this can help with robustness of evaluation.
 % Vielä ehkä joku backgrounding conclusion joka olis lähellä vehtarin conclusionia 
 
 
 \section{Datasets and methods}
 
+This thesis focuses on the metrics used in model selection, not necessarily the model selection process itself. The workflow of metric evaluation was as follows: First the data was analysed to check for which features to use or if some data processing had to be done. After this the data was aggregated to different datasets: three by store group level and nine store level datasets. The compared models were constructed from the available data and the 
+
 
 % Dataset perusjutut
 
-The original dataset consists of department-level weekly sales data of 45 stores. The data spans a little over two years, from 
-20.2.2010 to 26.10.2012. Each store location is associated with features that may help with sales prediction. 
-The features are temperature, unemployment, price of gas, and consumer price index CPI. Also the store size
-and type of store is known. The original dataset contains information about markdowns, but this feature is available only from 11.11.2011 onwards.
-This renders the feature useless, as the effect of the missing markdowns will not be attributed correctly, skewing the results. For example, a spike in sales could be due to
-markdown campaign or seasonality. If the markdown data would be complete for the whole dataset the effect could be separated from seasonality. However, as there is
-markdown data for less than two years, some spikes will not have data about possible markdowns. This leads to the uplift to be attributed to seasonality, which may not be correct.
-Leaving markdowns out of the features will effectively cause the uplift from markdowns to be attributed to noise if the markdown campaigns are not seasonal.
+\subsection{Original data and data processing}
 
-The sales data for store groups A and B demonstrate strong seasonality. Especially during Decembers the turnover spikes due to 
-strong holiday effect. For store group C the sales are more consistent throughout the year. Temperature is the only feature that clearly behaves seasonally. 
-Originally unemployment was expressed to equal the latest unemployment statistic. This made the feature behave rather discontinuously. To get around
-the discontinuity affecting the results, the unemployment for each week was calculated by interpolating unemployment from last and next changepoint.
-After the transformation, both unemployment and consumer price index (CPI) have a clear trend. 
+The original dataset consists of department-level weekly sales data of 45 stores. The data spans a little over two years, from 20 February 2010 to 26 October 2012. Each store location is associated with features that may help with sales prediction. The features are temperature, unemployment, price of gas, and consumer price index CPI. Also the store size and type of store is known. The original dataset contains information about markdowns, but this feature is available only from 11.11.2011 onwards. This renders the feature useless, as the effect of the missing markdowns will not be attributed correctly, skewing the results. For example, a spike in sales could be due to markdown campaign or seasonality. If the markdown data would be complete for the whole dataset the effect could be separated from seasonality. However, as there is markdown data for less than two years, some spikes will not have data about possible markdowns. This leads to the uplift to be attributed to seasonality, which may not be correct. Leaving markdowns out of the features will effectively cause the uplift from markdowns to be attributed to noise if the markdown campaigns are not seasonal.
+
+The sales data for store groups A and B demonstrate strong seasonality. Especially during Decembers the turnover spikes due to strong holiday effect. For store group C the sales are more consistent throughout the year. Temperature is the only feature that clearly behaves seasonally. Originally unemployment was expressed to equal the latest unemployment statistic. This made the feature behave rather discontinuously. To get around the discontinuity affecting the results, the unemployment for each week was calculated by interpolating unemployment from last and next changepoint. After the transformation, both unemployment and consumer price index (CPI) have a clear trend. 
 
 %Usually trends or seasonalities are an issue if they are present in the explanatory variables. Trend can cause the model to 
 %intepret the feature having a too significant effect on the response variable if the trend in response variable is not caused
@@ -227,32 +188,16 @@ After the transformation, both unemployment and consumer price index (CPI) have 
 
 % Dataset aggregoinnit
 
-The original dataset contains sales data on a department level. There are a total of 81 departments, but not all are present in every
-store. We are still left with 3331 sales time series. Not all time series can be modelled of fitted, thus we need to reduce the amount of data to have any
-hope of modelling anything in a reasonable time. The department-level sales are first aggregated to store-level sales by summing sales in each department
-in each store. This still leaves us with 45 time series, which is still a bit too much. To simplify things a bit more, the stores are further aggregated based on
-store type (A, B or C). The features for these store groups are obtained by calculating a size-weighted average. As the aggregation process of the features can 
-render the features less meaningful, a small subset of stores is also selected from each store group. Comparing these stores to the store groups will reveal if the aggregeation
-lessens the predictive performance of the models using the provided features.
+The original dataset contains sales data on a department level. There are a total of 81 departments, but not all are present in every store. We are still left with 3331 sales time series. Not all time series can be modelled of fitted, thus we need to reduce the amount of data to have any hope of modelling anything in a reasonable time. The department-level sales are first aggregated to store-level sales by summing sales in each department in each store. This still leaves us with 45 time series, which is still a bit too much. To simplify things a bit more, the stores are further aggregated based on store type (A, B or C). The features for these store groups are obtained by calculating a size-weighted average. As the aggregation process of the features can render the features less meaningful, a small subset of stores is also selected from each store group. Comparing these stores to the store groups will reveal if the aggregation lessens the predictive performance of the models using the provided features.
 
 % Mallit
 
-The Prophet model by \cite{Prophet} is a linear model that is used to predict time series. The model consists of seasonality components, piece-wisely linear trend, and possible explanatory variables such as holidays. The 
-seasonalities are modelled using a Fourier approximation with a limited number of coefficients. Trend is modelled linearly between a number of pre-determined 
-changepoints. After the last change point the model also assumes a linear trend. The prophet model treats time as a feature ranging from 0 to 1. Notably, the prediction
-does not directly depend on previous observations but seasonality and trend. They are calculated using also the other observations, but that calculation does not require a constant time difference between observations.
-As such, the model can handle inconsistent time intervals between datapoints. This means that the training and testing set do not have to consist of sequential observations.
+\subsection{Prophet-models}
+
+The Prophet model by \cite{Prophet} is a linear model that is used to predict time series. The model consists of seasonality components, piece-wisely linear trend, and possible explanatory variables such as holidays. The seasonalities are modelled using a Fourier approximation with a limited number of coefficients. Trend is modelled linearly between a number of pre-determined changepoints. After the last change point the model also assumes a linear trend. The prophet model treats time as a feature ranging from 0 to 1. Notably, the prediction does not directly depend on previous observations but seasonality and trend. They are calculated using also the other observations, but that calculation does not require a constant time difference between observations. As such, the model can handle inconsistent time intervals between datapoints. This means that the training and testing set do not have to consist of sequential observations.
 
 
-Each of the five used models is an Prophet model with different settings and features. The models are labeled M1 to M5. The first model was chosen to act as a benchmark
-to be compared against the other models. This should demonstrate if changes to the base model yield any improved predictive performance. The second model adds on the benchmark model
-by also incorporating the additional features present in the dataset. These were temperature, CPI, unemployment rate and fuel price. The fourth model does not utilize the extra features. 
-It attempts to demonstrate the behaviour of the metrics with overfitted models. The number of Fourier coefficients for seasonality are doubled from the benchmark model.
-Models three and five differ fundamentally from the other models as they are not reasonably possible to implement in a real world prediction scenario. Both of them are 
-given the sales time series as an explanatory variable. This is done to study the behaviour of the metrics in situations where the models actually represent the real world 
-data generating process. In this case the process is rather simple, as the correct prediction should follow trivially from the features. Model three is equal to the 
-benchmark model extended by this feature. Model five has also less trend changepoints and disabled seasonality. As M5 should produce the exact same output with less variables
-the information criteria should always rank it as better performing. The differences between used models are displayed in table \ref{tab:model_settings}.
+Each of the five used models is an Prophet model with different settings and features. The models are labeled M1 to M5. The first model was chosen to act as a benchmark to be compared against the other models. This should demonstrate if changes to the base model yield any improved predictive performance. The second model adds on the benchmark model by also incorporating the additional features present in the dataset. These were temperature, CPI, unemployment rate and fuel price. The fourth model does not utilise the extra features. It attempts to demonstrate the behaviour of the metrics with overfitted models. The number of Fourier coefficients for seasonality are doubled from the benchmark model. Models three and five differ fundamentally from the other models as they are not reasonably possible to implement in a real world prediction scenario. Both of them are given the sales time series as an explanatory variable. This is done to study the behaviour of the metrics in situations where the models actually represent the real world data generating process. In this case the process is rather simple, as the correct prediction should follow trivially from the features. Model three is equal to the benchmark model extended by this feature. Model five has also less trend changepoints and disabled seasonality. As M5 should produce the exact same output with less variables the information criteria should always rank it as better performing. The differences between used models are displayed in Table \ref{tab:model_settings}.
 
 % M1: Only weekly sales, no additional features.
 % M2: All features, no other tricks.
@@ -277,14 +222,9 @@ the information criteria should always rank it as better performing. The differe
 
 % Metriikat
 
-The models were compared using five different metrics. The metrics used were Akaike information criterion (AIC), deviance information criterion (DIC),
-Watanabe-Aikaike information criterion (WAIC), mean average percentage error (MAPE), and 10-fold cross validation. The information criterions are calculated using only
-in-sample fits. They aim to estimate the out-of-sample predictive performance of the model using the likelihood of past observations. Notably only WAIC of the information criterions
-fully considers the bayesian nature of the model. It utilizes the whole posterior distribution instead of some aggregated values. MAPE is calculated in the spirit of hold-out predictive methods 
-by reserving a small portion of data from the tail of the dataset to act as a test set. The percentage errors of the predictions are then averaged to obtain MAPE. 10-fold cross validation
-is calculated by assigning randomly 1/10 of the datapoints as test set and then calculating the likelihood of the prediction for the test set. This is performed ten times
-so that each datapoint belongs to the test set once. 10-fold CV is the average of the results. Test set selection of MAPE is demonstrated in figure \ref{fig:hold_out_data} and 
-one of the 10-fold cv splits can be found in figure \ref{fig:cv_demo}. 
+\subsection{Metrics}
+
+The models were compared using five different metrics. The metrics used were Akaike information criterion (AIC), deviance information criterion (DIC), Watanabe-Aikaike information criterion (WAIC), mean average percentage error (MAPE), and 10-fold cross validation. The information criterions are calculated using only in-sample fits. They aim to estimate the out-of-sample predictive performance of the model using the likelihood of past observations. Notably only WAIC of the information criterions fully considers the bayesian nature of the model. It utilises the whole posterior distribution instead of some aggregated values. MAPE is calculated in the spirit of hold-out predictive methods by reserving a small portion of data from the tail of the dataset to act as a test set. The percentage errors of the predictions are then averaged to obtain MAPE. 10-fold cross validation is calculated by assigning randomly 1/10 of the datapoints as test set and then calculating the likelihood of the prediction for the test set. This is performed ten times so that each datapoint belongs to the test set once. 10-fold CV is the average of the results. Test set selection of MAPE is demonstrated in Fig. \ref{fig:hold_out_data} and one of the 10-fold cv splits can be found in Fig. \ref{fig:cv_demo}. 
 
 % Miten MAPE eroaa likelihood-jutuista
 
@@ -387,26 +327,15 @@ one of the 10-fold cv splits can be found in figure \ref{fig:cv_demo}.
 
 
 
-Applying the metrics yielded promising results. The results are presented visually in figure \ref{fig:metrics_visualization}. 
-The visual representation highlights the order different metrics rank the models.
-AIC and DIC ranked all the models similarly for all the datasets, but there were differences in the margins between the models.
-WAIC seemed to mostly agree with AIC and DIC, but in datasets B and C the order of models m1 and m4 was reversed. 
+Applying the metrics yielded promising results. The results are presented visually in Fig. \ref{fig:metrics_visualization}. The visual representation highlights the order different metrics rank the models. AIC and DIC ranked all the models similarly for all the datasets, but there were differences in the margins between the models. WAIC seemed to mostly agree with AIC and DIC, but in datasets B and C the order of models m1 and m4 was reversed. 
 
-Ranking by MAPE has many similarities with the information criterion rankings. However the model m5 performed worse with all 
-datasets, dropping behind m3 in A and C, but also behind m1 and m4 in B. In dataset B MAPE ranked m1 better than m4. This agrees
-with the WAIC ranking, but it is the other way around with AIC and DIC. The other notable difference in MAPE scores is that in datasets
-A and B the model m2 seems to perform much worse than the other models. However this phenomenon is not present in C. 
+Ranking by MAPE has many similarities with the information criterion rankings. However the model m5 performed worse with all datasets, dropping behind m3 in A and C, but also behind m1 and m4 in B. In dataset B MAPE ranked m1 better than m4. This agrees with the WAIC ranking, but it is the other way around with AIC and DIC. The other notable difference in MAPE scores is that in datasets A and B the model m2 seems to perform much worse than the other models. However this phenomenon is not present in C. 
 
-10-fold cross validation ranks the models m5 and m3 the best in all datasets, just like the information criterions do. However the
-ranking of the rest varies. In dataset C the models m1, m2 and m4 are ranked similarly as by AIC and DIC. In both A and B the model m4
-takes the last place, while m2 and m1 get a score similar to each other. M2 was ranked better than m1 for dataset A and vice versa for B, but
-the margin was rather slim.
+10-fold cross validation ranks the models m5 and m3 the best in all datasets, just like the information criterions do. However the ranking of the rest varies. In dataset C the models m1, m2 and m4 are ranked similarly as by AIC and DIC. In both A and B the model m4 takes the last place, while m2 and m1 get a score similar to each other. M2 was ranked better than m1 for dataset A and vice versa for B, but the margin was rather slim.
 
 % TODO: VOIKO OLLA NIIN, ETTÄ 10-FOLD CV:SSÄ KÄY M4:N KANSSA SITEN, ETTÄ VAAN JOKU NIISTÄ FITEISTÄ MENEE TOSI PAHASTI PIELEEN???
 
-Overall it seems, that the metrics correctly recognize the "data generating models" from other models. Also M5 mostly ranks better than M3, as it has less 
-non-informative regressors. When it comes to the ranking of models M1, M2 and M4, the results are not as clear. In store groups A and B M2 performs much worse than the other models when evaluating with MAPE. This likely indicates, that the model overestimates the importance of the external regressors. As the regressors have
-trends, the prediction drifts off the actual sales. In 10-fold cv this is not observed, as the datapoints in test set are picked randomly. The test points have similar-valued training points next to them, thus the trend does not have time to cause the predictions to drift off.
+Overall it seems, that the metrics correctly recognise the "data generating models" from other models. Also M5 mostly ranks better than M3, as it has less non-informative regressors. When it comes to the ranking of models M1, M2 and M4, the results are not as clear. In store groups A and B M2 performs much worse than the other models when evaluating with MAPE. This likely indicates, that the model overestimates the importance of the external regressors. As the regressors have trends, the prediction drifts off the actual sales. In 10-fold cv this is not observed, as the datapoints in test set are picked randomly. The test points have similar-valued training points next to them, thus the trend does not have time to cause the predictions to drift off.
 
 10-fold cv appears to rank M4 worse than the other metrics. This may be due to overfitting the seasonality with too little training data. As the model is evaluated with 10-fold cv, 10\% of the data is reserved for testing. This reduction of training data can be the cause for the model to overfit the seasonality, as it had a greater number of coefficients to fit than the other models.
 
@@ -445,7 +374,7 @@ One thing to keep in mind when examining the results is the difference of loss f
 		\caption{Store group C}
 		\label{fig:metrics_C}
 	\end{subfigure}
-	\caption{\label{fig:metrics_visualization}Visualization of model validation metric results by store group. Arranged such that visually lower is better.
+	\caption{\label{fig:metrics_visualization}Visualisation of model validation metric results by store group. Arranged such that visually lower is better.
 	Each axis is scaled so that extreme values are at the ends. Please note the inverted axis of 10-fold cross validation metric. For 
 	precise values please refer to Table \ref{tab:metrics_results}}
 \end{figure}
@@ -512,7 +441,7 @@ One thing to keep in mind when examining the results is the difference of loss f
 \begin{figure}[htb]
 	\centering
 	\includegraphics[height=8cm]{../plots/forecasts/30_weeks_prediction_components_demo.pdf}
-	\caption{Trend and yearly seasonality components of the fitted model used in figure \ref{fig:hold_out_data}.}
+	\caption{Trend and yearly seasonality components of the fitted model used in Fig. \ref{fig:hold_out_data}.}
 	\label{fig:prediction_components_demo}
 \end{figure}
 
