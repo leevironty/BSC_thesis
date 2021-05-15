@@ -139,7 +139,7 @@ hyödynttää makroa $\backslash$abstracttext luodessasi lomakkeen tiivistelmä�
 
 Businesses need forecasting to succeed. Correctly forecasting demand for goods is essential for any retail business, as shortages can cause loss of sales. As companies collect more and more data, the possibilities of forecastable subjects and possible features increase dramatically. However, one can not just include more features in the model and expect it to perform well. Also, not all models are suitable for all forecasting tasks. The number of possible models is endless, but most of them will perform poorly. To find the useful ones, we must be able to measure the goodness of a model. Being able to objectively compare models allows for systematic approaches of model selection to be adopted.
 
-Model validation is an integral part of a robust modelling framework. Bayesian models are a relatively novel model type, which has gained considerable popularity in recent years, as computational power of modern computers has kept rising. As a relatively new method, not too many validation metrics have been proposed with these kinds of models in mind.
+After \cite{BDA}, model validation is an integral part of a robust modelling framework. Bayesian models are a relatively novel model type, which has gained considerable popularity in recent years, as computational power of modern computers has kept rising. As a relatively new method, not too many validation metrics have been proposed with these kinds of models in mind.
 
 The current state of model validation for Bayesian models can be described as "unsatisfactory". Information criteria that try to predict out of sample fitness can have strong biases, and some may not take into consideration the nature of Bayesian models and distributions of parameters. Cross validation can be extremely computationally intensive. Also, most information criteria are based on a loss function proportional to the root mean square of errors, but that may not always be the most useful function to optimise for. In some businesses the consequences of errors in forecasts can be described better with the mean absolute percentage error. All in all there does not exist a clearly better method for solving all Bayesian model validation problems.
 
@@ -169,9 +169,6 @@ Model selection methods can be categorised by the view they take on whether the 
 
 \section{Datasets and methods}
 
-This thesis focuses on the metrics used in model selection, not necessarily the model selection process itself. The workflow of metric evaluation was as follows: First the data was analysed to check for which features to use or if some data processing had to be done. After this the data was aggregated to different datasets: three by store group level and nine store level datasets. The compared models were constructed from the available data and the 
-
-
 % Dataset perusjutut
 
 \subsection{Original data and data processing}
@@ -188,13 +185,51 @@ The sales data for store groups A and B demonstrate strong seasonality. Especial
 
 % Dataset aggregoinnit
 
-The original dataset contains sales data on a department level. There are a total of 81 departments, but not all are present in every store. We are still left with 3331 sales time series. Not all time series can be modelled of fitted, thus we need to reduce the amount of data to have any hope of modelling anything in a reasonable time. The department-level sales are first aggregated to store-level sales by summing sales in each department in each store. This still leaves us with 45 time series, which is still a bit too much. To simplify things a bit more, the stores are further aggregated based on store type (A, B or C). The features for these store groups are obtained by calculating a size-weighted average. As the aggregation process of the features can render the features less meaningful, a small subset of stores is also selected from each store group. Comparing these stores to the store groups will reveal if the aggregation lessens the predictive performance of the models using the provided features.
+The original dataset contains sales data on a department level. There are a total of 81 departments, but not all are present in every store. We are still left with 3331 sales time series. Not all time series can be modelled of fitted, thus we need to reduce the amount of data to have any hope of modelling anything in a reasonable time. The department-level sales are first aggregated to store-level sales by summing sales in each department in each store. This still leaves us with 45 time series, which is still a bit too much. To simplify things a bit more, the stores are further aggregated based on store type (A, B or C). The aggregated sales are presented in Fig. \ref{fig:data_y}. The features for these store groups are obtained by calculating a size-weighted average. As the aggregation process of the features can render the features less meaningful, a small subset of stores is also selected from each store group. Comparing these stores to the store groups will reveal if the aggregation lessens the predictive performance of the models using the provided features. The aggregated features can be found in Fig. \ref{fig:regressors}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[height=8cm]{../plots/dataset/dataset_plot_y.pdf}
+	\caption{Aggregated weekly sales by store group. Groups A and B demonstrate holiday effects while group C remains relatively stable through each year.
+	}
+	\label{fig:data_y}
+\end{figure}
+
+\begin{figure}[htb]
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../plots/dataset/dataset_plot_temperature.pdf}
+		\caption{Temperature by store group}
+		\label{fig:data_temp}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../plots/dataset/dataset_plot_CPI.pdf}
+		\caption{Consumer price index by store group}
+		\label{fig:data_cpi}
+	\end{subfigure}
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../plots/dataset/dataset_plot_fuel_price.pdf}
+		\caption{Fuel price by store group}
+		\label{fig:data_fuel}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[b]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../plots/dataset/dataset_plot_unemployment_interpolated.pdf}
+		\caption{Interpolated unemployment rate by store group}
+		\label{fig:data_unemp}
+	\end{subfigure}
+	\caption{\label{fig:regressors} Additional features used in Model M2.}
+\end{figure}
 
 % Mallit
 
 \subsection{Prophet-models}
 
-The Prophet model by \cite{Prophet} is a linear model that is used to predict time series. The model consists of seasonality components, piece-wisely linear trend, and possible explanatory variables such as holidays. The seasonalities are modelled using a Fourier approximation with a limited number of coefficients. Trend is modelled linearly between a number of pre-determined changepoints. After the last change point the model also assumes a linear trend. The prophet model treats time as a feature ranging from 0 to 1. Notably, the prediction does not directly depend on previous observations but seasonality and trend. They are calculated using also the other observations, but that calculation does not require a constant time difference between observations. As such, the model can handle inconsistent time intervals between datapoints. This means that the training and testing set do not have to consist of sequential observations.
+The Prophet model by \cite{Prophet} is a linear model that is used to predict time series. The model consists of seasonality components, piece-wisely linear trend, and possible explanatory variables such as holidays. A component-wise breakdown of a fitted model is visualised in Fig. \ref{fig:prediction_components_demo}. The seasonalities are modelled using a Fourier approximation with a limited number of coefficients. Trend is modelled linearly between a number of pre-determined changepoints. After the last change point the model also assumes a linear trend. The prophet model treats time as a feature ranging from 0 to 1. Notably, the prediction does not directly depend on previous observations but seasonality and trend. They are calculated using also the other observations, but that calculation does not require a constant time difference between observations. As such, the model can handle inconsistent time intervals between datapoints. This means that the training and testing set do not have to consist of sequential observations.
 
 
 Each of the five used models is an Prophet model with different settings and features. The models are labeled M1 to M5. The first model was chosen to act as a benchmark to be compared against the other models. This should demonstrate if changes to the base model yield any improved predictive performance. The second model adds on the benchmark model by also incorporating the additional features present in the dataset. These were temperature, CPI, unemployment rate and fuel price. The fourth model does not utilise the extra features. It attempts to demonstrate the behaviour of the metrics with overfitted models. The number of Fourier coefficients for seasonality are doubled from the benchmark model. Models three and five differ fundamentally from the other models as they are not reasonably possible to implement in a real world prediction scenario. Both of them are given the sales time series as an explanatory variable. This is done to study the behaviour of the metrics in situations where the models actually represent the real world data generating process. In this case the process is rather simple, as the correct prediction should follow trivially from the features. Model three is equal to the benchmark model extended by this feature. Model five has also less trend changepoints and disabled seasonality. As M5 should produce the exact same output with less variables the information criteria should always rank it as better performing. The differences between used models are displayed in Table \ref{tab:model_settings}.
@@ -226,6 +261,14 @@ Each of the five used models is an Prophet model with different settings and fea
 
 The models were compared using five different metrics. The metrics used were Akaike information criterion (AIC), deviance information criterion (DIC), Watanabe-Aikaike information criterion (WAIC), mean average percentage error (MAPE), and 10-fold cross validation. The information criterions are calculated using only in-sample fits. They aim to estimate the out-of-sample predictive performance of the model using the likelihood of past observations. Notably only WAIC of the information criterions fully considers the bayesian nature of the model. It utilises the whole posterior distribution instead of some aggregated values. MAPE is calculated in the spirit of hold-out predictive methods by reserving a small portion of data from the tail of the dataset to act as a test set. The percentage errors of the predictions are then averaged to obtain MAPE. 10-fold cross validation is calculated by assigning randomly 1/10 of the datapoints as test set and then calculating the likelihood of the prediction for the test set. This is performed ten times so that each datapoint belongs to the test set once. 10-fold CV is the average of the results. Test set selection of MAPE is demonstrated in Fig. \ref{fig:hold_out_data} and one of the 10-fold cv splits can be found in Fig. \ref{fig:cv_demo}. 
 
+\subsection{Bayesian model fitting}
+
+Bayesian models rely on inferring the posterior probability densities of the parameters from data and prior probabilities. For complex models this can not be done analytically but by using Markov chain Monte Carlo sampling (MCMC). To be more specific, the adaptation of MCMC used in Stan was the No-U-Turn sampler (NUTS), as described in \cite{NUTS}. This sampling process explores the possible parameter space of the model, searching for likely parameter values, and yields a large collection of point value combinations for the parameters. Stan is a Bayesian data modelling platform used to mathematically model the Prophet model and fit it using MCMC sampling. Usually the sampling process utilises multiple chains to ensure proper convergence of the sampling process.
+
+\subsection{Workflow}
+
+This thesis focuses on the metrics used in model selection, not necessarily the model selection process itself. The workflow of metric evaluation was as follows: First the data was analysed to check for which features to use or if some data processing had to be done. After this the data was aggregated to different datasets: three by store group level and nine store level datasets. The compared models were constructed from the available data. Each of the models was fitted for each of the available datasets. Each of the five metrics were then computed for all the model-data combinations. All the fitted models and metrics were saved in a Pickle container to be analysed later. Ordering of the models by metrics results were then compared against each other within each dataset.
+
 % Miten MAPE eroaa likelihood-jutuista
 
 % Perustelut just näiden metriikoiden valinnalle
@@ -237,46 +280,8 @@ The models were compared using five different metrics. The metrics used were Aka
 
 
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[height=8cm]{../plots/dataset/dataset_plot_y.pdf}
-	\caption{Aggregated weekly sales by store group. Groups A and B demonstrate holiday effects while group C remains relatively stable through each year.
-	}
-	\label{fig:data_y}
-\end{figure}
-
-
 % https://www.overleaf.com/learn/latex/How_to_Write_a_Thesis_in_LaTeX_(Part_3):_Figures,_Subfigures_and_Tables
-\begin{figure}
-	\begin{subfigure}[b]{0.5\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../plots/dataset/dataset_plot_temperature.pdf}
-		\caption{Temperature by store group}
-		\label{fig:data_temp}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}[b]{0.5\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../plots/dataset/dataset_plot_CPI.pdf}
-		\caption{Consumer price index by store group}
-		\label{fig:data_cpi}
-	\end{subfigure}
 
-
-	\begin{subfigure}[b]{0.5\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../plots/dataset/dataset_plot_fuel_price.pdf}
-		\caption{Fuel price by store group}
-		\label{fig:data_fuel}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}[b]{0.5\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../plots/dataset/dataset_plot_unemployment_interpolated.pdf}
-		\caption{Interpolated unemployment rate by store group}
-		\label{fig:data_unemp}
-	\end{subfigure}
-\end{figure}
 
 % \begin{figure}[htb] % Kaikkien mallien in-sample -fitit
 % 	\centering
@@ -324,16 +329,21 @@ The models were compared using five different metrics. The metrics used were Aka
 % voi luotettavuuden arviointi olla myös siellä. 
 
 
+The models were fitted using Stan for MCMC sampling with four chains and sampling parameters target metropolis acceptance rate $\delta = 0.9$ and maximum tree depth of 11. Rest of the sampling parameters were left to their default values as suggested by Stan authors. The obtained results for the metrics are presented in Table \ref{tab:metrics_results}. Each of the used datasets produced a table of the same format, but only the tables for store-group level aggregation are presented here for clarity. More numerical results can be found in the Appendix. The columns of the tables represent the evaluated metrics. For the information criteria and MAPE evaluation lower values are desirable. As 10-fold CV is a likelihood, higher is better. The metric results can be used to rank the models by their performance. This is visualised in Fig. \ref{fig:metrics_visualization}. From the figure it can be seen that the results are somewhat consistent between the models and metrics.
+% TODO: Lisää ne resultsit liitteeksi.
 
+%\subsection{Metrics for the models}
 
+The visual representation highlights the order different metrics rank the models. AIC and DIC ranked all the models similarly for all the datasets, but there were differences in the margins between the models. WAIC seemed to mostly agree with AIC and DIC, but in datasets B and C the order of models m1 and m4 was reversed. 
 
-Applying the metrics yielded promising results. The results are presented visually in Fig. \ref{fig:metrics_visualization}. The visual representation highlights the order different metrics rank the models. AIC and DIC ranked all the models similarly for all the datasets, but there were differences in the margins between the models. WAIC seemed to mostly agree with AIC and DIC, but in datasets B and C the order of models m1 and m4 was reversed. 
+Ranking by MAPE has many similarities with the information criterion rankings. However the Model M5 performed worse with all datasets, dropping behind m3 in A and C, but also behind m1 and m4 in B. In dataset B MAPE ranked m1 better than m4. This agrees with the WAIC ranking, but it is the other way around with AIC and DIC. The other notable difference in MAPE scores is that in datasets A and B the Model M2 seems to perform much worse than the other models. However this phenomenon is not present in C. 
 
-Ranking by MAPE has many similarities with the information criterion rankings. However the model m5 performed worse with all datasets, dropping behind m3 in A and C, but also behind m1 and m4 in B. In dataset B MAPE ranked m1 better than m4. This agrees with the WAIC ranking, but it is the other way around with AIC and DIC. The other notable difference in MAPE scores is that in datasets A and B the model m2 seems to perform much worse than the other models. However this phenomenon is not present in C. 
-
-10-fold cross validation ranks the models m5 and m3 the best in all datasets, just like the information criterions do. However the ranking of the rest varies. In dataset C the models m1, m2 and m4 are ranked similarly as by AIC and DIC. In both A and B the model m4 takes the last place, while m2 and m1 get a score similar to each other. M2 was ranked better than m1 for dataset A and vice versa for B, but the margin was rather slim.
+10-fold cross validation ranks the models m5 and m3 the best in all datasets, just like the information criterions do. However the ranking of the rest varies. In dataset C the models m1, m2 and m4 are ranked similarly as by AIC and DIC. In both A and B the Model M4 takes the last place, while m2 and m1 get a score similar to each other. M2 was ranked better than m1 for dataset A and vice versa for B, but the margin was rather slim.
 
 % TODO: VOIKO OLLA NIIN, ETTÄ 10-FOLD CV:SSÄ KÄY M4:N KANSSA SITEN, ETTÄ VAAN JOKU NIISTÄ FITEISTÄ MENEE TOSI PAHASTI PIELEEN???
+
+\subsection{Applicability of the metrics}
+
 
 Overall it seems, that the metrics correctly recognise the "data generating models" from other models. Also M5 mostly ranks better than M3, as it has less non-informative regressors. When it comes to the ranking of models M1, M2 and M4, the results are not as clear. In store groups A and B M2 performs much worse than the other models when evaluating with MAPE. This likely indicates, that the model overestimates the importance of the external regressors. As the regressors have trends, the prediction drifts off the actual sales. In 10-fold cv this is not observed, as the datapoints in test set are picked randomly. The test points have similar-valued training points next to them, thus the trend does not have time to cause the predictions to drift off.
 
@@ -471,10 +481,11 @@ One thing to keep in mind when examining the results is the difference of loss f
 
 %% Liitteet
 %% Poista a.o. \clearpage- ja \thesisappendix -makrot, jos liiteitä ei ole.
-\clearpage
-\thesisappendix
 
-\section{Esimerkki liitteestä\label{LiiteA}}
+%\clearpage
+%\thesisappendix
+
+%\section{Esimerkki liitteestä\label{LiiteA}}
 
 %Kaavojen numerointi muodostaa liitteissä oman kokonaisuutensa:
 %\begin{align}
@@ -483,8 +494,8 @@ One thing to keep in mind when examining the results is the difference of loss f
 %\end{align}
 
 
-\clearpage
-\section{Toinen esimerkki liitteestä\label{LiiteB}}
+%\clearpage
+%\section{Toinen esimerkki liitteestä\label{LiiteB}}
 
 %% Liitteiden kaavat, taulukot ja kuvat numeroidaan omana kokonaisuutenaan
 

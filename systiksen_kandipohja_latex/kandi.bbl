@@ -1,9 +1,24 @@
-\begin{thebibliography}{2}
+\begin{thebibliography}{4}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Gelman et~al.(2013)Gelman, Carlin, Stern, Dunson, Vehtari, and
+  Rubin]{BDA}
+Andrew Gelman, John~B Carlin, Hal~S Stern, David~B Dunson, Aki Vehtari, and
+  Donald~B Rubin.
+\newblock \emph{Bayesian data analysis}.
+\newblock CRC press, 2013.
+
+\bibitem[Hoffman and Gelman(2014)]{NUTS}
+Matthew~D. Hoffman and Andrew Gelman.
+\newblock The no-u-turn sampler: Adaptively setting path lengths in hamiltonian
+  monte carlo.
+\newblock \emph{Journal of Machine Learning Research}, 15\penalty0
+  (47):\penalty0 1593--1623, 2014.
+\newblock URL \url{http://jmlr.org/papers/v15/hoffman14a.html}.
 
 \bibitem[Taylor and Letham(2017)]{Prophet}
 Sean~J Taylor and Benjamin Letham.
