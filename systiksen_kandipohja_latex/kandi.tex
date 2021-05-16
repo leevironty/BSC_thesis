@@ -261,6 +261,28 @@ Each of the five used models is an Prophet model with different settings and fea
 
 The models were compared using five different metrics. The metrics used were Akaike information criterion (AIC), deviance information criterion (DIC), Watanabe-Aikaike information criterion (WAIC), mean average percentage error (MAPE), and 10-fold cross validation. The information criterions are calculated using only in-sample fits. They aim to estimate the out-of-sample predictive performance of the model using the likelihood of past observations. Notably only WAIC of the information criterions fully considers the bayesian nature of the model. It utilises the whole posterior distribution instead of some aggregated values. MAPE is calculated in the spirit of hold-out predictive methods by reserving a small portion of data from the tail of the dataset to act as a test set. The percentage errors of the predictions are then averaged to obtain MAPE. 10-fold cross validation is calculated by assigning randomly 1/10 of the datapoints as test set and then calculating the likelihood of the prediction for the test set. This is performed ten times so that each datapoint belongs to the test set once. 10-fold CV is the average of the results. Test set selection of MAPE is demonstrated in Fig. \ref{fig:hold_out_data} and one of the 10-fold cv splits can be found in Fig. \ref{fig:cv_demo}. 
 
+\begin{figure}[htb]
+	\centering
+	\includegraphics[height=8cm]{../plots/forecasts/cv_metric_demo_plot.pdf}
+	\caption{Demonstrating the cv metric calculation. Red dots represent the 10\% of the datapoints that were selected for testing set. Model is fitted using training data represented
+	by the black dots. This data splitting and evaluation is repeated ten times until all datapoints have belonged to the test set exactly once.}
+	\label{fig:cv_demo}
+\end{figure}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[height=8cm]{../plots/forecasts/30_weeks_prediction_demo.pdf}
+	\caption{Hold-out prediction 30 weeks in the future. Training data in black, test data in red. This train / test split is used in MAPE metric.}
+	\label{fig:hold_out_data}
+\end{figure}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[height=8cm]{../plots/forecasts/30_weeks_prediction_components_demo.pdf}
+	\caption{Trend and yearly seasonality components of the fitted model used in Fig. \ref{fig:hold_out_data}.}
+	\label{fig:prediction_components_demo}
+\end{figure}
+
 \subsection{Bayesian model fitting}
 
 Bayesian models rely on inferring the posterior probability densities of the parameters from data and prior probabilities. For complex models this can not be done analytically but by using Markov chain Monte Carlo sampling (MCMC). To be more specific, the adaptation of MCMC used in Stan was the No-U-Turn sampler (NUTS), as described in \cite{NUTS}. This sampling process explores the possible parameter space of the model, searching for likely parameter values, and yields a large collection of point value combinations for the parameters. Stan is a Bayesian data modelling platform used to mathematically model the Prophet model and fit it using MCMC sampling. Usually the sampling process utilises multiple chains to ensure proper convergence of the sampling process.
@@ -361,34 +383,6 @@ One thing to keep in mind when examining the results is the difference of loss f
 % - lisätutkimus: loss-functioniks joku mapen tyyppinen, mut millä sit annetaan sakkoja?
 
 
-
-
-\begin{figure}
-	\begin{subfigure}[htb]{0.5\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../plots/metrics/metrics_plot_A.pdf}
-		\caption{Store group A}
-		\label{fig:metrics_A}
-	\end{subfigure}
-	\hfill
-	\begin{subfigure}[htb]{0.5\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../plots/metrics/metrics_plot_B.pdf}
-		\caption{Store group B}
-		\label{fig:metrics_B}
-	\end{subfigure}
-	
-	\begin{subfigure}[htb]{0.5\textwidth}
-		\centering
-		\includegraphics[width=\textwidth]{../plots/metrics/metrics_plot_C.pdf}
-		\caption{Store group C}
-		\label{fig:metrics_C}
-	\end{subfigure}
-	\caption{\label{fig:metrics_visualization}Visualisation of model validation metric results by store group. Arranged such that visually lower is better.
-	Each axis is scaled so that extreme values are at the ends. Please note the inverted axis of 10-fold cross validation metric. For 
-	precise values please refer to Table \ref{tab:metrics_results}}
-\end{figure}
-
 \begin{table}
 	\caption{\label{tab:metrics_results}Numerical representation of the validation metric results applied by store group.}
 	\begin{subtable}[t]{\textwidth}
@@ -430,47 +424,39 @@ One thing to keep in mind when examining the results is the difference of loss f
 	\end{subtable}
 \end{table}
 
-
-
-
-\begin{figure}[htb]
-	\centering
-	\includegraphics[height=8cm]{../plots/forecasts/cv_metric_demo_plot.pdf}
-	\caption{Demonstrating the cv metric calculation. Red dots represent the 10\% of the datapoints that were selected for testing set. Model is fitted using training data represented
-	by the black dots. This data splitting and evaluation is repeated ten times until all datapoints have belonged to the test set exactly once.}
-	\label{fig:cv_demo}
+\begin{figure}
+	\begin{subfigure}[htb]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../plots/metrics/metrics_plot_A.pdf}
+		\caption{Store group A}
+		\label{fig:metrics_A}
+	\end{subfigure}
+	\hfill
+	\begin{subfigure}[htb]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../plots/metrics/metrics_plot_B.pdf}
+		\caption{Store group B}
+		\label{fig:metrics_B}
+	\end{subfigure}
+	
+	\begin{subfigure}[htb]{0.5\textwidth}
+		\centering
+		\includegraphics[width=\textwidth]{../plots/metrics/metrics_plot_C.pdf}
+		\caption{Store group C}
+		\label{fig:metrics_C}
+	\end{subfigure}
+	\caption{\label{fig:metrics_visualization}Visualisation of model validation metric results by store group. Arranged such that visually lower is better.
+	Each axis is scaled so that extreme values are at the ends. Please note the inverted axis of 10-fold cross validation metric. For 
+	precise values please refer to Table \ref{tab:metrics_results}}
 \end{figure}
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[height=8cm]{../plots/forecasts/30_weeks_prediction_demo.pdf}
-	\caption{Hold-out prediction 30 weeks in the future. Training data in black, test data in red. This train / test split is used in MAPE metric.}
-	\label{fig:hold_out_data}
-\end{figure}
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[height=8cm]{../plots/forecasts/30_weeks_prediction_components_demo.pdf}
-	\caption{Trend and yearly seasonality components of the fitted model used in Fig. \ref{fig:hold_out_data}.}
-	\label{fig:prediction_components_demo}
-\end{figure}
+
 
 
 
 \section{Summary} 
 
-%Opinnäytteen tekijä vastaa siitä, että opinnäyte on tässä dokumentissa
-%ja opinnäytteen tekemistä käsittelevillä luennoilla sekä
-%harjoituksissa annettujen ohjeiden mukainen muotoseikoiltaan,
-%rakenteeltaan ja ulkoasultaan.
-
-
-
-
-% LÄHDELUETTELO
-%  BibTeX-tiedoston kokoaminen onnistuu näppärästi esim. 
-%  Firefoxin Zotero-lisäosalla http://www.zotero.org/
-%  joka osaa poimia viitteet suoraan Google Scholarista.
 
 
 
