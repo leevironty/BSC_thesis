@@ -10,3 +10,6 @@ dataset_A_fitted_models.pkl
 *.pkl
 .vscode/
 *.pyc
+kandi.*
+!kandi.tex
+!kandi.pdf
