@@ -218,6 +218,7 @@ Each of the five used models is a Prophet model with different settings and feat
 % M5: Similar to M3, but seasonality is disabled, and trend has only one changepoint. 
 
 \begin{table}[]
+	\centering
 	\caption{\label{tab:model_settings} Different settings used in each model. Extra features are fuel price, CPI, unemployment and temperature.}
 	\begin{tabular}{|l|l|l|l|l|l|}
 		\hline
@@ -347,7 +348,9 @@ Ranking by MAPE has many similarities with the information criterion rankings. H
 
 Overall, it seems that the metrics correctly recognise the "data generating models" from other models. Additionally, M5 mostly ranks better than M3, as it has less non-informative regressors. When it comes to the ranking of models M1, M2 and M4, the results are not as clear. In store groups A and B M2 performs much worse than the other models when evaluating with MAPE. This likely indicates, that the model overestimates the importance of the external regressors. As the regressors have trends, the prediction drifts off the actual sales. In 10-fold cv this is not observed, as the datapoints in test set are picked randomly. The test points have similar-valued training points next to them, thus the trend does not have time to cause the predictions to drift off.
 
-\textbf{TODO: Include numerical results and } The evaluation speed of metrics varied a lot. Both AIC and WAIC were almost instant to calculate, but the other metrics took more time. Calculating DIC and MAPE took a couple of seconds each as they used the predict method of the Prophet model. 10-fold CV was the slowest to evaluate, as it re-fits the model multiple times. The relative slowness to other metrics was greatly amplified when evaluating slow-fitting models like the M4.
+Model fitting and metric evaluation times can be found in Table \ref{tab:times}. Fitting and evaluation was done on a 2017 MacBook Pro with an Intel Core i5-7360U CPU and 8GB of RAM. Fitting time depended heavily on the complexity of the model. The metrics can be categorised by their evaluation time. Both AIC and WAIC took under 10ms for all models. DIC evaluation took between six to nine seconds for all models, but this does not seem to depend on model complexity or initial fitting time. Lastly there are both MAPE and 10-fold CV evaluation. Their evaluation times did indirectly depend on model complexity, as both metrics require the model to be refit with different splits of data. Their evaluation took between 2 to 4.5 and 7 to 11 times their respective model fitting time. The fastest category of AIC and WAIC are calculated by using only matrix operations on the sampled parameters. This makes their evaluation extremely rapid. DIC also relies only on the fitted parameters, but first maximum likelihood estimates are calculated using the prediction method of the model. This involves non-matrix operations that are considerably slower to execute. Lastly both 
+
+Their speed can be attributed to the way they are calculated, as they do not need any refitting of models or calculation of maximum likelihood estimate (MLE) predictions for observed data. Calculating DIC and MAPE took a couple of seconds each as they used the predict method of the Prophet model. 10-fold CV was the slowest to evaluate, as it re-fits the model multiple times. The relative slowness to other metrics was greatly amplified when evaluating slow-fitting models like the M4.
 
 \textbf{TODO: Include stability plots} The metrics were tested for stability and consistency by plotting the metric evaluation as a function of samples. \textit{Preliminary results: AIC very consistent, WAIC has more variance, but low enough not to alter the ranking of models in this case.}
 
@@ -433,10 +436,32 @@ From a business application point of view, it can be concluded that the 10-fold 
 	precise values please refer to Table \ref{tab:metrics_results}}
 \end{figure}
 
+\begin{table}[htb]
+	\centering
+	\caption{Model fitting and metric evaluation times in seconds.}
+	\label{tab:times}
+	\begin{tabular}{|r|r|r|r|r|r|r|}
+	\hline
+	\textbf{}   & \textbf{Initial fitting time} & \textbf{AIC} & \textbf{DIC} & \textbf{WAIC} & \textbf{MAPE} & \textbf{10-fold-CV} \\ \hline
+	\textbf{M1} & 32.27                         & 0.00207      & 8.31         & 0.00420       & 108.39        & 358.46              \\ \hline
+	\textbf{M2} & 59.47                         & 0.00326      & 7.88         & 0.00412       & 163.33        & 491.66              \\ \hline
+	\textbf{M3} & 105.55                        & 0.00740      & 8.06         & 0.00453       & 203.68        & 763.72              \\ \hline
+	\textbf{M4} & 65.30                         & 0.00312      & 7.48         & 0.00426       & 151.36        & 490.07              \\ \hline
+	\textbf{M5} & 7.68                          & 0.00376      & 6.69         & 0.00453       & 34.79         & 83.10               \\ \hline
+	\end{tabular}
+\end{table}
 
+\begin{figure}[hbt]
+	\centering
+	\includegraphics{../plots/stability/metric_stability.pdf}
+	\caption{\label{fig:metric_stability_deviance}Metric values by sample count. Lower noise indicates more stable results. Metrics in deviance scale are present here, for MAPE see Fig. \ref{fig:metric_stability_mape}}
+\end{figure}
 
-
-
+\begin{figure}[hbt]
+	\centering
+	\includegraphics{../plots/stability/metric_stability_MAPE.pdf}
+	\caption{\label{fig:metric_stability_mape}Expected MAPE by sample count. Lower noise indicates more stable results. Metrics in deviance scale are presented in Fig. \ref{fig:metric_stability_deviance}}
+\end{figure}
 
 \section{Summary} 
 

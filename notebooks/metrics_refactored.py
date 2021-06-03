@@ -138,8 +138,8 @@ def k_fold_loo_cv_sweepable(model, points, max_samples, k=10):  # Oletetaan, ett
         fits.loc[i, 'fit'] = fit
 
     results = pd.DataFrame()
-    for s in np.linspace(max_samples//points, max_samples, points).astype(int):
-        print(f'Calculating for {s}/{max_samples} samples')
+    for s in tqdm.tqdm(np.linspace(max_samples//points, max_samples, points).astype(int)):
+        #print(f'Calculating for {s}/{max_samples} samples')
         res_s = 0
         lppds_s = []
         for i in range(k):            
@@ -203,7 +203,43 @@ def prophet_copy(m):
     m2.seasonalities = deepcopy(m.seasonalities)
     m2.country_holidays = deepcopy(m.country_holidays)
     return m2    
-    
+
+def prophet_copy_2(m, cutoff=None):
+    if m.history is None:
+        raise Exception('This is for copying a fitted Prophet object.')
+
+    if m.specified_changepoints:
+        changepoints = m.changepoints
+        if cutoff is not None:
+            # Filter change points '<= cutoff'
+            changepoints = changepoints[changepoints <= cutoff]
+    else:
+        changepoints = None
+
+    # Auto seasonalities are set to False because they are already set in
+    # m.seasonalities.
+    m2 = m.__class__(
+        growth=m.growth,
+        n_changepoints=m.n_changepoints,
+        changepoint_range=m.changepoint_range,
+        changepoints=changepoints,
+        yearly_seasonality=False,
+        weekly_seasonality=False,
+        daily_seasonality=False,
+        holidays=m.holidays,
+        seasonality_mode=m.seasonality_mode,
+        seasonality_prior_scale=m.seasonality_prior_scale,
+        changepoint_prior_scale=m.changepoint_prior_scale,
+        holidays_prior_scale=m.holidays_prior_scale,
+        mcmc_samples=m.mcmc_samples,
+        interval_width=m.interval_width,
+        uncertainty_samples=m.uncertainty_samples,
+        stan_backend=m.stan_backend.get_type()
+    )
+    m2.extra_regressors = deepcopy(m.extra_regressors)
+    m2.seasonalities = deepcopy(m.seasonalities)
+    m2.country_holidays = deepcopy(m.country_holidays)
+    return m2     
     
 def predict_with_samples(model, df):
     """
@@ -313,8 +349,8 @@ def sweep_samples(model, data, warmup=None, metrics = {'aic':aic, 'dic':dic, 'wa
             np.random.shuffle(params[name])
         return params
 
-    
-    for s in np.linspace(max_samples//points, max_samples, points).astype(int):
+    print(f'Fitting done, calculating metrics for {points} points')
+    for s in tqdm.tqdm(np.linspace(max_samples//points, max_samples, points).astype(int)):
         row = pd.Series()
         row['samples'] = s
         fit.params = sliced_params(s)
@@ -327,6 +363,138 @@ def defalut_cross_val(model, horizon='15w', initial='104w'):
     cv_res = diagnostics.cross_validation(model, horizon=horizon, initial=initial)
     agg = diagnostics.performance_metrics(cv_res, rolling_window=1)
     return {'value':agg, 'aux':cv_res}
+
+def defalut_cross_val_sweepable(model, horizon='15w', period=None, initial='104w', cutoffs=None, warmup=None, points = None) -> pd.DataFrame:
+    DEBUG = False
+    def generate_cutoffs(df, horizon, initial, period):
+        # Last cutoff is 'latest date in data - horizon' date
+        cutoff = df['ds'].max() - horizon
+        if cutoff < df['ds'].min():
+            raise ValueError('Less data than horizon.')
+        result = [cutoff]
+        while result[-1] >= min(df['ds']) + initial:
+            cutoff -= period
+            # If data does not exist in data range (cutoff, cutoff + horizon]
+            if not (((df['ds'] > cutoff) & (df['ds'] <= cutoff + horizon)).any()):
+                # Next cutoff point is 'last date before cutoff in data - horizon'
+                if cutoff > df['ds'].min():
+                    closest_date = df[df['ds'] <= cutoff].max()['ds']
+                    cutoff = closest_date - horizon
+                # else no data left, leave cutoff as is, it will be dropped.
+            result.append(cutoff)
+        result = result[:-1]
+        if len(result) == 0:
+            raise ValueError(
+                'Less data than horizon after initial window. '
+                'Make horizon or initial shorter.'
+            )
+        #logger.info('Making {} forecasts with cutoffs between {} and {}'.format(
+        #    len(result), result[-1], result[0]
+        #))
+        return list(reversed(result))
+
+    ### Tästä alkaa oikeesti ###
+    df = model.history.copy().reset_index(drop=True)
+    horizon = pd.Timedelta(horizon)
+
+    predict_columns = ['ds', 'yhat']
+    if model.uncertainty_samples:
+        predict_columns.extend(['yhat_lower', 'yhat_upper'])
+        
+    # Identify largest seasonality period
+    period_max = 0.
+    for s in model.seasonalities.values():
+        period_max = max(period_max, s['period'])
+    seasonality_dt = pd.Timedelta(str(period_max) + ' days')    
+
+    # Set period
+    period = 0.5 * horizon if period is None else pd.Timedelta(period)
+    
+    # Set initial
+    if initial is None:
+        initial = max(3 * horizon, seasonality_dt)
+    else:
+        initial = pd.Timedelta(initial)
+    # Compute Cutoffs
+    cutoffs = generate_cutoffs(df, horizon, initial, period)
+        
+    # Check if the initial window 
+    # (that is, the amount of time between the start of the history and the first cutoff)
+    # is less than the maximum seasonality period
+    if initial < seasonality_dt:
+            msg = 'Seasonality has period of {} days '.format(period_max)
+            msg += 'which is larger than initial window. '
+            msg += 'Consider increasing initial.'
+            print(msg)
+
+
+    
+    #predicts = [
+    #    single_cutoff_forecast(df, model, cutoff, horizon, predict_columns)
+    #    for cutoff in tqdm(cutoffs)
+    #]
+
+    def single_cutoff_forecast(df, model, cutoff, horizon, predict_columns):
+        # Generate new object with copying fitting options
+        m = prophet_copy_2(model, cutoff)
+        # Train model
+        history_c = df[df['ds'] <= cutoff]
+        if history_c.shape[0] < 2:
+            raise Exception(
+                'Less than two datapoints before cutoff. '
+                'Increase initial window.'
+            )
+        m.fit(history_c, **model.fit_kwargs)
+        index_predicted = (df['ds'] > cutoff) & (df['ds'] <= cutoff + horizon)
+        # Get the columns for the future dataframe
+        columns = ['ds']
+        if m.growth == 'logistic':
+            columns.append('cap')
+            if m.logistic_floor:
+                columns.append('floor')
+        columns.extend(m.extra_regressors.keys())
+        columns.extend([
+            props['condition_name']
+            for props in m.seasonalities.values()
+            if props['condition_name'] is not None])
+        future_df = df[index_predicted][columns]
+        return {'model':m, 'future_df':future_df, 'index_predicted':index_predicted, 'cutoff':cutoff, 'df':df}
+    
+    if DEBUG: print('Fitting begins')
+    fits = []
+    for cutoff in cutoffs:
+        d = single_cutoff_forecast(df, model, cutoff, horizon, predict_columns)
+        fits.append(d)
+    if DEBUG: print('Fitting done, starting sample sweep / metric evaluation')
+    res = pd.DataFrame(columns=['MAPE', 'samples'])
+    max_samples = model.mcmc_samples - warmup
+    for s in tqdm.tqdm(np.linspace(max_samples//points, max_samples, points).astype(int)):
+        row = pd.Series()
+        row['samples'] = s
+        cutoff_preds = []
+        for f in fits:
+            m = f['model']
+            m.params = sliced_params(s, m.stan_backend.stan_fit)
+            yhat = m.predict(f['future_df'])
+            if DEBUG:
+                print('Forecasted something:')
+                print(yhat)
+            cutoff_preds.append(pd.concat([
+                yhat[predict_columns],
+                f['df'][f['index_predicted']][['y']].reset_index(drop=True),
+                pd.DataFrame({'cutoff': [f['cutoff']] * len(yhat)})
+            ], axis=1))
+        if DEBUG:
+            print('Cutoff_preds content:')
+            print(cutoff_preds)
+        default_cross_val_value = pd.concat(cutoff_preds, axis=0).reset_index(drop=True)
+        agg = diagnostics.performance_metrics(default_cross_val_value, rolling_window=1)
+        if DEBUG:
+            print('agg')
+            print(agg)
+        row['MAPE'] =  {'value':agg, 'aux':default_cross_val_value}        
+        res = res.append(row, ignore_index=True)
+    return res
 
 
 def fit_all(model_maker, datasets):

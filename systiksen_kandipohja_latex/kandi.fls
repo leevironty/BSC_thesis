@@ -415,6 +415,7 @@ INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/30_w
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/30_weeks_prediction_components_demo.pdf
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/30_weeks_prediction_components_demo.pdf
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/30_weeks_prediction_components_demo.pdf
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmri12.tfm
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../tables/rounded/aggregated_A_metrics.csv
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../tables/rounded/aggregated_B_metrics.csv
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../tables/rounded/aggregated_C_metrics.csv
@@ -427,9 +428,14 @@ INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/metrics/metric
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/metrics/metrics_plot_C.pdf
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/metrics/metrics_plot_C.pdf
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/metrics/metrics_plot_C.pdf
+INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/stability/metric_stability.pdf
+INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/stability/metric_stability.pdf
+INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/stability/metric_stability.pdf
+INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/stability/metric_stability_MAPE.pdf
+INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/stability/metric_stability_MAPE.pdf
+INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/stability/metric_stability_MAPE.pdf
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.bbl
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.bbl
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmri12.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmtt12.tfm
@@ -466,7 +472,6 @@ INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.out
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx12.pfb
@@ -474,6 +479,5 @@ INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi12.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr12.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmri12.pfb
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmsy10.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtt12.pfb
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb

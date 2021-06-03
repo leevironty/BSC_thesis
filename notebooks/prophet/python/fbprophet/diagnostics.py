@@ -192,6 +192,61 @@ def cross_validation(model, horizon, period=None, initial=None, parallel=None, c
     # Combine all predicted pd.DataFrame into one pd.DataFrame
     return pd.concat(predicts, axis=0).reset_index(drop=True)
 
+def cross_validation_sweepable(model, horizon, period=None, initial=None, cutoffs=None, warmup=None, points = None):
+
+    df = model.history.copy().reset_index(drop=True)
+    horizon = pd.Timedelta(horizon)
+
+    predict_columns = ['ds', 'yhat']
+    if model.uncertainty_samples:
+        predict_columns.extend(['yhat_lower', 'yhat_upper'])
+        
+    # Identify largest seasonality period
+    period_max = 0.
+    for s in model.seasonalities.values():
+        period_max = max(period_max, s['period'])
+    seasonality_dt = pd.Timedelta(str(period_max) + ' days')    
+
+    # Set period
+    period = 0.5 * horizon if period is None else pd.Timedelta(period)
+    
+    # Set initial
+    if initial is None:
+        initial = max(3 * horizon, seasonality_dt)
+    else:
+        initial = pd.Timedelta(initial)
+    # Compute Cutoffs
+    cutoffs = generate_cutoffs(df, horizon, initial, period)
+        
+    # Check if the initial window 
+    # (that is, the amount of time between the start of the history and the first cutoff)
+    # is less than the maximum seasonality period
+    if initial < seasonality_dt:
+            msg = 'Seasonality has period of {} days '.format(period_max)
+            msg += 'which is larger than initial window. '
+            msg += 'Consider increasing initial.'
+            logger.warning(msg)
+
+
+    
+    predicts = [
+        single_cutoff_forecast(df, model, cutoff, horizon, predict_columns)
+        for cutoff in tqdm(cutoffs)
+    ]
+
+    predicts = []
+    max_samples = model.mcmc_samples - warmup
+    for s in tqdm.tqdm(np.linspace(max_samples//points, max_samples, points).astype(int)):
+        row = pd.Series()
+        row['samples'] = s
+        fit.params = sliced_params(s)
+        for metric_name, metric in metrics.items():
+            row[metric_name] = metric(fit)
+        res = res.append(row, ignore_index=True)
+
+    # Combine all predicted pd.DataFrame into one pd.DataFrame
+    return pd.concat(predicts, axis=0).reset_index(drop=True)
+
 
 def single_cutoff_forecast(df, model, cutoff, horizon, predict_columns):
     """Forecast for single cutoff. Used in cross validation function
