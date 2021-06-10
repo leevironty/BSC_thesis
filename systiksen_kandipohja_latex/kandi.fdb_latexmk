@@ -1,12 +1,12 @@
 # Fdb version 3
-["bibtex kandi"] 1622756941 "kandi.aux" "kandi.bbl" "kandi" 1622756955
+["bibtex kandi"] 1623147311 "kandi.aux" "kandi.bbl" "kandi" 1623147312
   "/usr/local/texlive/2020/texmf-dist/bibtex/bst/natbib/plainnat.bst" 1233624470 26816 ffe5423d2019860bad9f54bc402fac15 ""
   "kandi.aux" 1622756952 10489 84c1964e25bbb985e3123ee9a2616962 "pdflatex"
-  "library.bib" 1620912734 14890 155255a9e8f24b906f8542e217ced023 ""
+  "library.bib" 1623147308 15032 4e7426de441319ab49e3d8ab25cc33b9 ""
   (generated)
-  "kandi.bbl"
   "kandi.blg"
-["pdflatex"] 1622756942 "/Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.tex" "/Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.pdf" "kandi" 1622756955
+  "kandi.bbl"
+["pdflatex"] 1622756942 "/Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.tex" "/Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.pdf" "kandi" 1623147312
   "../plots/dataset/dataset_plot_CPI.pdf" 1618653118 12940 5f683219081a6b0ff5c05e21e154a603 ""
   "../plots/dataset/dataset_plot_fuel_price.pdf" 1618653117 16119 3b48279ec664da27ab4e11422a39d9f0 ""
   "../plots/dataset/dataset_plot_temperature.pdf" 1618653116 16651 a51f18864269e299937108f4b94542bf ""
@@ -257,19 +257,19 @@
   "aaltologo.sty" 1610875491 477521 1c21ab9ad822e128498b965ba22fc361 ""
   "aaltothesis.cls" 1610875491 38383 72c51d008c6d41771309d8fe4407e0f9 ""
   "kandi.aux" 1622756952 10489 84c1964e25bbb985e3123ee9a2616962 "pdflatex"
-  "kandi.bbl" 1622756942 1517 4ce592aa97a206dff3835709961023fc "bibtex kandi"
+  "kandi.bbl" 1623147312 1517 4ce592aa97a206dff3835709961023fc "bibtex kandi"
   "kandi.out" 1622756953 2182 de2693230df1ba953fba251ce0f0ff60 "pdflatex"
   "kandi.tex" 1622756926 42427 9e949f5ed73012e5dcd134a1f7a3ef49 ""
   "kandi.toc" 1622756953 1127 65390597a8de835c32e622dd89477428 "pdflatex"
   "kandi.xmpdata" 1622756949 249 a8de13c252686a8faf826b5d5fe70c76 "pdflatex"
   "pdfa.xmpi" 1622756946 5845 12eaaa247a44f4b5561802520392dcc6 "pdflatex"
   (generated)
-  "kandi.xmpdata"
-  "kandi.pdf"
-  "kandi.aux"
   "/Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.log"
-  "kandi.out"
-  "kandi.toc"
   "kandi.log"
-  "pdfa.xmpi"
+  "kandi.out"
+  "kandi.xmpdata"
+  "kandi.aux"
   "/Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.pdf"
+  "kandi.pdf"
+  "pdfa.xmpi"
+  "kandi.toc"
