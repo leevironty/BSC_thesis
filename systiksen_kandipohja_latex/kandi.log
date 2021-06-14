@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.20)  4 JUN 2021 00:49
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2020.8.20)  14 JUN 2021 17:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -902,43 +902,43 @@ Package pdftex.def Info: ../plots/forecasts/30_weeks_prediction_components_demo.
 
 pdfTeX warning: pdflatex (file /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/30_weeks_prediction_components_demo.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >] [13] [14]
-<../plots/metrics/metrics_plot_A.pdf, id=476, 361.35pt x 433.62pt>
+<../plots/metrics/metrics_plot_A.pdf, id=480, 361.35pt x 433.62pt>
 File: ../plots/metrics/metrics_plot_A.pdf Graphic file (type pdf)
 <use ../plots/metrics/metrics_plot_A.pdf>
-Package pdftex.def Info: ../plots/metrics/metrics_plot_A.pdf  used on input line 416.
+Package pdftex.def Info: ../plots/metrics/metrics_plot_A.pdf  used on input line 418.
 (pdftex.def)             Requested size: 213.39566pt x 256.07838pt.
-<../plots/metrics/metrics_plot_B.pdf, id=477, 361.35pt x 433.62pt>
+<../plots/metrics/metrics_plot_B.pdf, id=481, 361.35pt x 433.62pt>
 File: ../plots/metrics/metrics_plot_B.pdf Graphic file (type pdf)
 <use ../plots/metrics/metrics_plot_B.pdf>
-Package pdftex.def Info: ../plots/metrics/metrics_plot_B.pdf  used on input line 423.
+Package pdftex.def Info: ../plots/metrics/metrics_plot_B.pdf  used on input line 425.
 (pdftex.def)             Requested size: 213.39566pt x 256.07838pt.
 
-Overfull \hbox (2.61105pt too wide) in paragraph at lines 414--427
+Overfull \hbox (2.61105pt too wide) in paragraph at lines 416--429
 []$[]$  $[]$ 
  []
 
-<../plots/metrics/metrics_plot_C.pdf, id=478, 361.35pt x 433.62pt>
+<../plots/metrics/metrics_plot_C.pdf, id=482, 361.35pt x 433.62pt>
 File: ../plots/metrics/metrics_plot_C.pdf Graphic file (type pdf)
 <use ../plots/metrics/metrics_plot_C.pdf>
-Package pdftex.def Info: ../plots/metrics/metrics_plot_C.pdf  used on input line 430.
+Package pdftex.def Info: ../plots/metrics/metrics_plot_C.pdf  used on input line 432.
 (pdftex.def)             Requested size: 213.39566pt x 256.07838pt.
-<../plots/stability/metric_stability.pdf, id=481, 433.62pt x 289.08pt>
+<../plots/stability/metric_stability.pdf, id=485, 433.62pt x 289.08pt>
 File: ../plots/stability/metric_stability.pdf Graphic file (type pdf)
 <use ../plots/stability/metric_stability.pdf>
-Package pdftex.def Info: ../plots/stability/metric_stability.pdf  used on input line 456.
+Package pdftex.def Info: ../plots/stability/metric_stability.pdf  used on input line 458.
 (pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
 
-Overfull \hbox (6.8276pt too wide) in paragraph at lines 456--457
+Overfull \hbox (6.8276pt too wide) in paragraph at lines 458--459
  [][] 
  []
 
-<../plots/stability/metric_stability_MAPE.pdf, id=484, 433.62pt x 289.08pt>
+<../plots/stability/metric_stability_MAPE.pdf, id=488, 433.62pt x 289.08pt>
 File: ../plots/stability/metric_stability_MAPE.pdf Graphic file (type pdf)
 <use ../plots/stability/metric_stability_MAPE.pdf>
-Package pdftex.def Info: ../plots/stability/metric_stability_MAPE.pdf  used on input line 462.
+Package pdftex.def Info: ../plots/stability/metric_stability_MAPE.pdf  used on input line 464.
 (pdftex.def)             Requested size: 433.61894pt x 289.07928pt.
 
-Overfull \hbox (6.8276pt too wide) in paragraph at lines 462--463
+Overfull \hbox (6.8276pt too wide) in paragraph at lines 464--465
  [][] 
  []
 
@@ -960,50 +960,50 @@ Package microtype Info: Loading generic protrusion settings for font family
 ) [19
 
 ]
-<../plots/metrics/metrics_plot_single_store_4_of_A.pdf, id=781, 361.35pt x 433.62pt>
+<../plots/metrics/metrics_plot_single_store_4_of_A.pdf, id=784, 361.35pt x 433.62pt>
 File: ../plots/metrics/metrics_plot_single_store_4_of_A.pdf Graphic file (type pdf)
 <use ../plots/metrics/metrics_plot_single_store_4_of_A.pdf>
-Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_4_of_A.pdf  used on input line 503.
+Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_4_of_A.pdf  used on input line 505.
 (pdftex.def)             Requested size: 128.0387pt x 153.64836pt.
-<../plots/metrics/metrics_plot_single_store_19_of_A.pdf, id=782, 361.35pt x 433.62pt>
+<../plots/metrics/metrics_plot_single_store_19_of_A.pdf, id=785, 361.35pt x 433.62pt>
 File: ../plots/metrics/metrics_plot_single_store_19_of_A.pdf Graphic file (type pdf)
 <use ../plots/metrics/metrics_plot_single_store_19_of_A.pdf>
-Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_19_of_A.pdf  used on input line 510.
+Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_19_of_A.pdf  used on input line 512.
 (pdftex.def)             Requested size: 128.0387pt x 153.64836pt.
-<../plots/metrics/metrics_plot_single_store_32_of_A.pdf, id=783, 361.35pt x 433.62pt>
+<../plots/metrics/metrics_plot_single_store_32_of_A.pdf, id=786, 361.35pt x 433.62pt>
 File: ../plots/metrics/metrics_plot_single_store_32_of_A.pdf Graphic file (type pdf)
 <use ../plots/metrics/metrics_plot_single_store_32_of_A.pdf>
-Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_32_of_A.pdf  used on input line 517.
+Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_32_of_A.pdf  used on input line 519.
 (pdftex.def)             Requested size: 128.0387pt x 153.64836pt.
-<../plots/metrics/metrics_plot_single_store_7_of_B.pdf, id=784, 361.35pt x 433.62pt>
+<../plots/metrics/metrics_plot_single_store_7_of_B.pdf, id=787, 361.35pt x 433.62pt>
 File: ../plots/metrics/metrics_plot_single_store_7_of_B.pdf Graphic file (type pdf)
 <use ../plots/metrics/metrics_plot_single_store_7_of_B.pdf>
-Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_7_of_B.pdf  used on input line 524.
+Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_7_of_B.pdf  used on input line 526.
 (pdftex.def)             Requested size: 128.0387pt x 153.64836pt.
-<../plots/metrics/metrics_plot_single_store_17_of_B.pdf, id=785, 361.35pt x 433.62pt>
+<../plots/metrics/metrics_plot_single_store_17_of_B.pdf, id=788, 361.35pt x 433.62pt>
 File: ../plots/metrics/metrics_plot_single_store_17_of_B.pdf Graphic file (type pdf)
 <use ../plots/metrics/metrics_plot_single_store_17_of_B.pdf>
-Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_17_of_B.pdf  used on input line 531.
+Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_17_of_B.pdf  used on input line 533.
 (pdftex.def)             Requested size: 140.84192pt x 169.01187pt.
-<../plots/metrics/metrics_plot_single_store_23_of_B.pdf, id=786, 361.35pt x 433.62pt>
+<../plots/metrics/metrics_plot_single_store_23_of_B.pdf, id=789, 361.35pt x 433.62pt>
 File: ../plots/metrics/metrics_plot_single_store_23_of_B.pdf Graphic file (type pdf)
 <use ../plots/metrics/metrics_plot_single_store_23_of_B.pdf>
-Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_23_of_B.pdf  used on input line 538.
+Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_23_of_B.pdf  used on input line 540.
 (pdftex.def)             Requested size: 140.84192pt x 169.01187pt.
-<../plots/metrics/metrics_plot_single_store_37_of_C.pdf, id=787, 361.35pt x 433.62pt>
+<../plots/metrics/metrics_plot_single_store_37_of_C.pdf, id=790, 361.35pt x 433.62pt>
 File: ../plots/metrics/metrics_plot_single_store_37_of_C.pdf Graphic file (type pdf)
 <use ../plots/metrics/metrics_plot_single_store_37_of_C.pdf>
-Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_37_of_C.pdf  used on input line 545.
+Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_37_of_C.pdf  used on input line 547.
 (pdftex.def)             Requested size: 128.0387pt x 153.64836pt.
-<../plots/metrics/metrics_plot_single_store_38_of_C.pdf, id=788, 361.35pt x 433.62pt>
+<../plots/metrics/metrics_plot_single_store_38_of_C.pdf, id=791, 361.35pt x 433.62pt>
 File: ../plots/metrics/metrics_plot_single_store_38_of_C.pdf Graphic file (type pdf)
 <use ../plots/metrics/metrics_plot_single_store_38_of_C.pdf>
-Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_38_of_C.pdf  used on input line 552.
+Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_38_of_C.pdf  used on input line 554.
 (pdftex.def)             Requested size: 128.0387pt x 153.64836pt.
-<../plots/metrics/metrics_plot_single_store_44_of_C.pdf, id=789, 361.35pt x 433.62pt>
+<../plots/metrics/metrics_plot_single_store_44_of_C.pdf, id=792, 361.35pt x 433.62pt>
 File: ../plots/metrics/metrics_plot_single_store_44_of_C.pdf Graphic file (type pdf)
 <use ../plots/metrics/metrics_plot_single_store_44_of_C.pdf>
-Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_44_of_C.pdf  used on input line 559.
+Package pdftex.def Info: ../plots/metrics/metrics_plot_single_store_44_of_C.pdf  used on input line 561.
 (pdftex.def)             Requested size: 128.0387pt x 153.64836pt.
  [20
 
@@ -1032,26 +1032,26 @@ pdfTeX warning: pdflatex (file /Users/leevironty/kandi/systiksen_kandipohja_late
 
 pdfTeX warning: pdflatex (file /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/metrics/metrics_plot_single_store_44_of_C.pdf): PDF inclusion: multiple pdfs with page group included in a single page
 >]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 607.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 607.
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 609.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 609.
  (/Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 607.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 607.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 609.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 609.
 Package rerunfilecheck Info: File `kandi.out' has not changed.
 (rerunfilecheck)             Checksum: DE2693230DF1BA953FBA251CE0F0FF60;2182.
  ) 
 Here is how much of TeX's memory you used:
- 29644 strings out of 480893
- 518341 string characters out of 5908082
- 1240746 words of memory out of 5000000
+ 29638 strings out of 480893
+ 518275 string characters out of 5908082
+ 1240748 words of memory out of 5000000
  44493 multiletter control sequences out of 15000+600000
- 595207 words of font info for 123 fonts, out of 8000000 for 9000
+ 594858 words of font info for 120 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  76i,10n,68p,1624b,2350s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local/texlive/2020/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmbx12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmmi12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmr12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmri12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/public/lm/lmtt12.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/helvetic/uhvb8a.pfb>
-Output written on /Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.pdf (20 pages, 672242 bytes).
+Output written on /Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.pdf (20 pages, 670892 bytes).
 PDF statistics:
- 1351 PDF objects out of 1440 (max. 8388607)
+ 1354 PDF objects out of 1440 (max. 8388607)
  54 named destinations out of 1000 (max. 500000)
  20735 words of extra memory for PDF output out of 20736 (max. 10000000)
 

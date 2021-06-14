@@ -415,7 +415,6 @@ INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/30_w
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/30_weeks_prediction_components_demo.pdf
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/30_weeks_prediction_components_demo.pdf
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/forecasts/30_weeks_prediction_components_demo.pdf
-INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmri12.tfm
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../tables/rounded/aggregated_A_metrics.csv
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../tables/rounded/aggregated_B_metrics.csv
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../tables/rounded/aggregated_C_metrics.csv
@@ -436,6 +435,7 @@ INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/stability/metr
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/../plots/stability/metric_stability_MAPE.pdf
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.bbl
 INPUT /Users/leevironty/kandi/systiksen_kandipohja_latex/kandi.bbl
+INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmri12.tfm
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT /usr/local/texlive/2020/texmf-dist/tex/latex/lm/t1lmtt.fd
 INPUT /usr/local/texlive/2020/texmf-dist/fonts/tfm/public/lm/ec-lmtt12.tfm
