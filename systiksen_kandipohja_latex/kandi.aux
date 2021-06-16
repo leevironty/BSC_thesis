@@ -46,15 +46,17 @@
 \newlabel{fig:regressors}{{2}{10}{Additional features used in Model M2.\relax }{figure.caption.6}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces  Different settings used in each model. Extra features are fuel price, CPI, unemployment and temperature.\relax }}{10}{table.caption.7}\protected@file@percent }
 \newlabel{tab:model_settings}{{1}{10}{Different settings used in each model. Extra features are fuel price, CPI, unemployment and temperature.\relax }{table.caption.7}{}}
+\citation{stan_paper}
 \citation{NUTS}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Metrics}{11}{subsection.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Demonstrating the cv metric calculation. Red dots represent the 10\% of the datapoints that were selected for testing set. Model is fitted using training data represented by the black dots. This data splitting and evaluation is repeated ten times until all datapoints have belonged to the test set exactly once.\relax }}{11}{figure.caption.8}\protected@file@percent }
-\newlabel{fig:cv_demo}{{3}{11}{Demonstrating the cv metric calculation. Red dots represent the 10\% of the datapoints that were selected for testing set. Model is fitted using training data represented by the black dots. This data splitting and evaluation is repeated ten times until all datapoints have belonged to the test set exactly once.\relax }{figure.caption.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Demonstrating the CV metric calculation. Red dots represent the 10\% of the datapoints that were selected for testing set. Model is fitted using training data represented by the black dots. This data splitting and evaluation is repeated ten times until all datapoints have belonged to the test set exactly once.\relax }}{11}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:cv_demo}{{3}{11}{Demonstrating the CV metric calculation. Red dots represent the 10\% of the datapoints that were selected for testing set. Model is fitted using training data represented by the black dots. This data splitting and evaluation is repeated ten times until all datapoints have belonged to the test set exactly once.\relax }{figure.caption.8}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Bayesian model fitting}{11}{subsection.3.4}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {4}{\ignorespaces Hold-out prediction 30 weeks in the future. Training data in black, test data in red. This train / test split is used in MAPE metric.\relax }}{12}{figure.caption.9}\protected@file@percent }
 \newlabel{fig:hold_out_data}{{4}{12}{Hold-out prediction 30 weeks in the future. Training data in black, test data in red. This train / test split is used in MAPE metric.\relax }{figure.caption.9}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5}{\ignorespaces Trend and yearly seasonality components of the fitted model used in Fig. \ref  {fig:hold_out_data}.\relax }}{12}{figure.caption.10}\protected@file@percent }
 \newlabel{fig:prediction_components_demo}{{5}{12}{Trend and yearly seasonality components of the fitted model used in Fig. \ref {fig:hold_out_data}.\relax }{figure.caption.10}{}}
+\citation{stan_manual_HMC}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.5}Workflow}{13}{subsection.3.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4}Results}{13}{section.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Applicability of the metrics}{14}{subsection.4.1}\protected@file@percent }
@@ -82,10 +84,12 @@
 \@writefile{lof}{\contentsline {figure}{\numberline {8}{\ignorespaces Expected MAPE by sample count. Lower noise indicates more stable results. Metrics in deviance scale are presented in Fig. \ref  {fig:metric_stability_deviance}\relax }}{18}{figure.caption.15}\protected@file@percent }
 \newlabel{fig:metric_stability_mape}{{8}{18}{Expected MAPE by sample count. Lower noise indicates more stable results. Metrics in deviance scale are presented in Fig. \ref {fig:metric_stability_deviance}\relax }{figure.caption.15}{}}
 \bibdata{library}
-\bibcite{BDA}{{1}{2013}{{Gelman et~al.}}{{Gelman, Carlin, Stern, Dunson, Vehtari, and Rubin}}}
-\bibcite{NUTS}{{2}{2014}{{Hoffman and Gelman}}{{}}}
-\bibcite{Prophet}{{3}{2017}{{Taylor and Letham}}{{}}}
-\bibcite{vehtari2012}{{4}{2012}{{Vehtari and Ojanen}}{{}}}
+\bibcite{stan_paper}{{1}{2017}{{Carpenter et~al.}}{{Carpenter, Gelman, Hoffman, Lee, Goodrich, Betancourt, Brubaker, Guo, Li, and Riddell}}}
+\bibcite{BDA}{{2}{2013}{{Gelman et~al.}}{{Gelman, Carlin, Stern, Dunson, Vehtari, and Rubin}}}
+\bibcite{NUTS}{{3}{2014}{{Hoffman and Gelman}}{{}}}
+\bibcite{stan_manual_HMC}{{4}{2018}{{Stan Development Team}}{{}}}
+\bibcite{Prophet}{{5}{2017}{{Taylor and Letham}}{{}}}
+\bibcite{vehtari2012}{{6}{2012}{{Vehtari and Ojanen}}{{}}}
 \setcounter{NMainTxtPages}{20-1}
 \setcounter{NAllPages}{20}
 \newlabel{app:single_store_results}{{A}{20}{Results for store-level data}{appendix.A}{}}

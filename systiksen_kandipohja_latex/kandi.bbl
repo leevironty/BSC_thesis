@@ -1,9 +1,17 @@
-\begin{thebibliography}{4}
+\begin{thebibliography}{6}
 \providecommand{\natexlab}[1]{#1}
 \providecommand{\url}[1]{\texttt{#1}}
 \expandafter\ifx\csname urlstyle\endcsname\relax
   \providecommand{\doi}[1]{doi: #1}\else
   \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Carpenter et~al.(2017)Carpenter, Gelman, Hoffman, Lee, Goodrich,
+  Betancourt, Brubaker, Guo, Li, and Riddell]{stan_paper}
+Bob Carpenter, Andrew Gelman, Matthew~D Hoffman, Daniel Lee, Ben Goodrich,
+  Michael Betancourt, Marcus Brubaker, Jiqiang Guo, Peter Li, and Allen
+  Riddell.
+\newblock Stan: A probabilistic programming language.
+\newblock \emph{Journal of statistical software}, 76\penalty0 (1), 2017.
 
 \bibitem[Gelman et~al.(2013)Gelman, Carlin, Stern, Dunson, Vehtari, and
   Rubin]{BDA}
@@ -19,6 +27,13 @@ Matthew~D. Hoffman and Andrew Gelman.
 \newblock \emph{Journal of Machine Learning Research}, 15\penalty0
   (47):\penalty0 1593--1623, 2014.
 \newblock URL \url{http://jmlr.org/papers/v15/hoffman14a.html}.
+
+\bibitem[{Stan Development Team}(2018)]{stan_manual_HMC}
+{Stan Development Team}.
+\newblock {HMC algorithm parameters}, 2018.
+\newblock URL
+  \url{https://mc-stan.org/docs/2_27/reference-manual/hmc-algorithm-parameters.html}.
+\newblock Version 2.27.0.
 
 \bibitem[Taylor and Letham(2017)]{Prophet}
 Sean~J Taylor and Benjamin Letham.
