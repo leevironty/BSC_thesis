@@ -62,9 +62,23 @@ All other rights are reserved.
 
 
 \begin{abstractpage}[english]
-Multiple methods for model selection exist, but when applied to Bayesian models in a business setting, none of them is clearly better than the others. Not all metrics take into account the Bayesian nature of the models. Some methods require the model to be fitted multiple times with different data, but this might cause issues if the models are slow to fit. availability of data points may also be limited, hindering the applicability of methods requiring hold-out sets.
 
-In this thesis we will study five popular model selection methods. The chosen metrics are Akaike information criterion (AIC), Deviance information criterion (DIC), Watanabe-Akaike information criterion (WAIC), mean absolute percentage error (MAPE) and 10-fold cross validation. We form five different models 
+%Multiple methods for model selection exist, but when applied to Bayesian models in a business setting, none of them is clearly better than the others. Not all metrics take into account the Bayesian nature of the models. Some methods require the model to be fitted multiple times with different data, but this might cause issues if the models are slow to fit. availability of data points may also be limited, hindering the applicability of methods requiring hold-out sets.
+
+%In this thesis we will study five popular model selection methods. The chosen metrics are Akaike information criterion (AIC), Deviance information criterion (DIC), Watanabe-Akaike information criterion (WAIC), mean absolute percentage error (MAPE) and 10-fold cross validation. We form five different models 
+
+
+
+Model selection metrics are used to compare models when determining which model captures best the modelled phenomenon. Multiple Bayesian model selection metrics exist, but they all have their drawbacks, especially when applied in a commercial setting. In this thesis we will model retail sales with bayesian models. We apply popular model selection metrics to the models and draw insights on their applicability in real world use cases. Business setting presents challenges to model selection, as the models typically take a long time to fit. Retail data is rarely perfect, as some features may be lacking for some time periods or the length of data way be very short.
+
+The selected metrics were Akaike Information Criterion (AIC), Deviance Information criterion (DIC), Watanabe-Akaike Information Criterion (WAIC), Mean Absolute Percentage Error (MAPE), and 10-fold cross validation. The metrics ranked evaluated models mostly comparably, suggesting that they may be interchangeable in some circumstances. Metric evaluation times varied by orders of magnitude, as both MAPE and 10-fold cross validation require the model to be refitted with testing data. Selected metrics were stable after 500 drawn samples.
+
+
+
+% Abstractin rakenne:
+% Ainakin yksi lause kustakin sectionista
+
+
 
 \end{abstractpage}
 \newpage
@@ -80,6 +94,8 @@ In this thesis we will study five popular model selection methods. The chosen me
 
 \begin{abstractpage}[finnish]
 %Tiivistelmässä on lyhyt selvitys kirjoituksen tärkeimmästä sisällöstä: mitä ja miten on tutkittu, sekä mitä tuloksia on saatu.Tämän opinnäytteen tiivistelmäteksti kirjoitetaan opinnäytteen luettavan osan lomakkeen lisäksi myös pdf-tiedoston metadataan. Kirjoita tähän metadataan kirjoitettavaa teksti. Metadatatekstissa ei saa olla erikoismerkkejä, rivinvaiho- tai kappaleenjakomerkkiä, joten näitä merkkeja ei saa käyttää tässä. Jos tiivistelmäsi ei sisällä erikoimerkkejä eikä kaipaa kappaleenjakoa, voit hyödynttää makroa abstracttext luodessasi lomakkeen tiivistelmää (katso kommentti alla). Metadatatiivistelmatekstin on muuten oltava sama kuin lomakkeessa oleva teksti.
+
+% Mallin valintametriikoita käytetään sovitettujen mallien vertailussa. Metriikoiden arvoilla voidaan asettaa mallit paremmuusjärjestyksee
 \end{abstractpage}
 
 
@@ -240,7 +256,7 @@ Each of the five used models is a Prophet model with different settings and feat
 
 \subsection{Metrics}
 
-The models were compared using five different metrics. The metrics used were Akaike information criterion (AIC), deviance information criterion (DIC), Watanabe-Akaike information criterion (WAIC), mean average percentage error (MAPE), and 10-fold CV. The information criterions are calculated using only in-sample fits. They aim to estimate the out-of-sample predictive performance of the model using the likelihood of past observations. Notably, only WAIC of the information criterions fully considers the Bayesian nature of the model. It utilises the whole posterior distribution instead of some aggregated values. MAPE is calculated in the spirit of hold-out predictive methods by reserving a small portion of data from the tail of the dataset to act as a test set. The percentage errors of the predictions are then averaged to obtain MAPE. 10-fold cross validation is calculated by assigning randomly 1/10 of the datapoints as test set and then calculating the likelihood of the prediction for the test set. This is performed ten times so that each datapoint belongs to the test set once. 10-fold CV is the average of the results. Test set selection of MAPE is demonstrated in Fig. \ref{fig:hold_out_data} and one of the 10-fold CV splits can be found in Fig. \ref{fig:cv_demo}. 
+The models were compared using five different metrics. The metrics used were Akaike information criterion (AIC), deviance information criterion (DIC), Watanabe-Akaike information criterion (WAIC), mean average percentage error (MAPE), and 10-fold CV. The information criterions are calculated using only in-sample fits. They aim to estimate the out-of-sample predictive performance of the model using the likelihood of past observations. Notably, only WAIC of the information criterions fully considers the Bayesian nature of the model. It utilises the whole posterior distribution instead of some aggregated values. MAPE is calculated  in the spirit of backtesting. First, a fifteen week test period is selected from the tail of the dataset. The model is then fitted on the preceding data. Prediction is calculated on the test period. This procedure is repeated three times, each time starting the test period seven weeks earlier. After the last predictions have been made, the absolute percentage errors are calculated. MAPE is the mean of those errors. 10-fold cross validation is calculated by assigning randomly 1/10 of the datapoints as test set and then calculating the likelihood of the prediction for the test set. This is performed ten times so that each datapoint belongs to the test set once. 10-fold CV is the average of the results. Test set selection of MAPE is demonstrated in Fig. \ref{fig:hold_out_data} and one of the 10-fold CV splits can be found in Fig. \ref{fig:cv_demo}. 
 
 \begin{figure}[htb]
 	\centering
@@ -383,7 +399,7 @@ From a business application point of view, it can be concluded that the 10-fold 
 					table head = \hline\textbf{Model} &\textbf{AIC} &\textbf{DIC} &\textbf{WAIC} &\textbf{MAPE}&\textbf{10-fold CV}\\\hline,
 					late after line= \\,
 					late after last line=\\\hline %
-					]{../tables/rounded/aggregated_A_metrics.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
+					]{../tables/rounded/aggregated_A_metrics_fixed.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
 					{\mname & \aic & \dic & \waic & \MAPE & \cv}
 					\centering
 					
@@ -396,7 +412,7 @@ From a business application point of view, it can be concluded that the 10-fold 
 					table head = \hline\textbf{Model} &\textbf{AIC} &\textbf{DIC} &\textbf{WAIC} &\textbf{MAPE}&\textbf{10-fold CV}\\\hline,
 					late after line= \\,
 					late after last line=\\\hline %
-					]{../tables/rounded/aggregated_B_metrics.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
+					]{../tables/rounded/aggregated_B_metrics_fixed.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
 					{\mname & \aic & \dic & \waic & \MAPE & \cv}
 					\centering
 					
@@ -409,7 +425,7 @@ From a business application point of view, it can be concluded that the 10-fold 
 					table head = \hline\textbf{Model} &\textbf{AIC} &\textbf{DIC} &\textbf{WAIC} &\textbf{MAPE}&\textbf{10-fold CV}\\\hline,
 					late after line= \\,
 					late after last line=\\\hline %
-					]{../tables/rounded/aggregated_C_metrics.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
+					]{../tables/rounded/aggregated_C_metrics_fixed.csv}{model_name=\mname,DIC=\dic,AIC=\aic,WAIC=\waic,default_cv=\MAPE,10-fold_cv=\cv}%
 					{\mname & \aic & \dic & \waic & \MAPE & \cv}
 					\centering
 	\end{subtable}
@@ -567,6 +583,10 @@ To study further the applicability of common model selection metrics one could e
 	\end{subfigure}
 	\caption{\label{fig:single_store_results_visualisation}Visualisation of model validation metric results for single stores.}
 \end{figure}
+
+\clearpage
+\section{Code}
+This thesis and the code used can be found online in Github. \url{https://github.com/leevironty/BSC_thesis}
 
 %Kaavojen numerointi muodostaa liitteissä oman kokonaisuutensa:
 %\begin{align}
